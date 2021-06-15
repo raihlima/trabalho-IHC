@@ -1,5 +1,7 @@
 # Trabalho IHC
 
+![Build Status]
+
 # Instalação 
 
 Instalação do PHP: 

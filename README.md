@@ -1,4 +1,4 @@
-# trabalho-ihc
+# Trabalho IHC
 
 # Instalação 
 
@@ -19,7 +19,7 @@ Depois instalar o composer dentro da pasta do projeto:
 composer install
 ``` 
 
-Se necessário copie o .env.example e renomeie para .env
+Se necessário copie o `.env.example` e renomeie para `.env`
 
 Após isso:
 ```

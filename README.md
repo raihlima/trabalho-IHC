@@ -1,6 +1,6 @@
 # Trabalho IHC
 
-![Build Status]
+![Build Status](https://github.com/raihlima/trabalho-ihc)
 
 # Instalação 
 

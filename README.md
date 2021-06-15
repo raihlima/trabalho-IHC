@@ -1,6 +1,6 @@
 # Trabalho IHC
 
-![Build Status](https://github.com/raihlima/trabalho-ihc)
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/raihlima/trabalho-ihc)
 
 # Instalação 
 

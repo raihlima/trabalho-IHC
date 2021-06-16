@@ -28,7 +28,7 @@ Após isso:
 php artisan key:generate
 ```
 
-Configurar o arquivo .env conforme o banco de dados.
+Configure o arquivo `.env` conforme o banco de dados.
 ```
 php artisan migrate --seed
 ```

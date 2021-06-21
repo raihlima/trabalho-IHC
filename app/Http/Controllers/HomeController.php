@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Professor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $usuario = Auth::user();
+        $professor = DB::table('professor')->where('id_usuario', '=', $usuario->id)->get();
+        if(!$professor->isEmpty()){
+            return view('professor');
+        } else {
+            return view('home');
+        }
+        
     }
 }

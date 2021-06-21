@@ -13,6 +13,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        Schema::create('users', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('matricula')->unique();
+            $table->string('password');
+            $table->string('name');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+/*
         Schema::create('usuario', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('matricula')->unique();
@@ -20,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('nome');
             $table->rememberToken();
             $table->timestamps();
-        });
+        }); */
     }
 
     /**

@@ -259,7 +259,7 @@ class DatabaseSeeder extends Seeder
         }
 
         //Criando banco de dados de Alunos
-        foreach (range(1,400) as $index) {
+        foreach (range(41,440) as $index) {
             DB::table('users')->insert([
 	            'name' => $faker->name,
 	            'matricula' => (201565000+$index),
@@ -293,6 +293,28 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
+        
+
+        //Adicionando estudante na turma
+        foreach (range(1,400) as $index) {
+            DB::table('turma_estudante')->insert([
+                'id_turma' => (($index%70)+1),
+                'id_estudante' => ($index+40),
+            ]);
+
+            DB::table('turma_estudante')->insert([
+                'id_turma' => (((1+$index)%70)+1),
+                'id_estudante' => ($index+40),
+            ]);
+
+            DB::table('turma_estudante')->insert([
+                'id_turma' => (((2+$index)%70)+1),
+                'id_estudante' => ($index+40),
+            ]);
+
+        }
         */
+
+        
     }
 }

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $faker = Faker::create('pt_BR');
 
+        /*
         //Criando usuário do professor
         foreach (range(1,40) as $index) {
             DB::table('users')->insert([
@@ -226,6 +227,72 @@ class DatabaseSeeder extends Seeder
             'nome' => 'Análise em Sistemas de Segurança',
         ]);
 
-        
+        //Criando turma
+        //Turma A
+        foreach (range(1,40) as $index) {
+            DB::table('turma')->insert([
+                'id_disciplina' => $index,
+                'id_professor' => $index,
+                'codigo' => 'A',
+                'data_inicio' => '2020-08-01 00:00:00',
+            ]);
+        }
+
+        //Turma B
+        foreach (range(1,20) as $index) {
+            DB::table('turma')->insert([
+                'id_disciplina' => $index,
+                'id_professor' => ($index + 10),
+                'codigo' => 'B',
+                'data_inicio' => '2020-08-01 00:00:00',
+            ]);
+        }
+
+        //Turma C
+        foreach (range(1,10) as $index) {
+            DB::table('turma')->insert([
+                'id_disciplina' => $index,
+                'id_professor' => ($index + 20),
+                'codigo' => 'C',
+                'data_inicio' => '2020-08-01 00:00:00',
+            ]);
+        }
+
+        //Criando banco de dados de Alunos
+        foreach (range(1,400) as $index) {
+            DB::table('users')->insert([
+	            'name' => $faker->name,
+	            'matricula' => (201565000+$index),
+	            'password' => bcrypt('1234'),
+	        ]);
+            //Adicionando na tabela do professor
+            if(($index%5) !=0){
+                DB::table('estudante')->insert([
+                    'id_usuario' => $index,
+                    'curso' => 'CC-D',
+                ]);
+            } elseif(($index%5) !=1) {
+                DB::table('estudante')->insert([
+                    'id_usuario' => $index,
+                    'curso' => 'CC-N',
+                ]);
+            } elseif(($index%5) !=2) {
+                DB::table('estudante')->insert([
+                    'id_usuario' => $index,
+                    'curso' => 'EX',
+                ]);
+            } elseif(($index%5) !=3) {
+                DB::table('estudante')->insert([
+                    'id_usuario' => $index,
+                    'curso' => 'SI',
+                ]);
+            } else{
+                DB::table('estudante')->insert([
+                    'id_usuario' => $index,
+                    'curso' => 'EC',
+                ]);
+            }
+        }
+        */
     }
 }

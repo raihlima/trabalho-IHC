@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $faker = Faker::create('pt_BR');
 
-        /*
         //Criando usuário do professor
         foreach (range(1,40) as $index) {
             DB::table('users')->insert([
@@ -313,8 +312,66 @@ class DatabaseSeeder extends Seeder
             ]);
 
         }
-        */
 
-        
+        //Adicionando avaliação dos alunos
+        foreach (range(1,1000) as $index) {
+            DB::table('avaliacao')->insert([
+	            'id_turma_estudante' => $index,
+                'p1' => rand(2,5),
+                'p2' => rand(2,5),
+                'p3' => rand(2,5),
+                'p4' => rand(2,5),
+                'p5' => rand(2,5),
+                'p6' => rand(2,5),
+                'p7' => rand(2,5),
+                'p8' => rand(2,5),
+                'p9' => rand(2,5),
+                'p10' => rand(2,5),
+                'p11' => rand(2,5),
+                'p12' => rand(2,5),
+                'p13' => rand(2,5),
+                'a1' => rand(2,5),
+                'a2' => rand(2,5),
+                'a3' => rand(2,5),
+                'a4' => rand(2,5),
+                'a5' => rand(2,5),
+                'a6' => rand(2,5),
+                'a7' => rand(2,5),
+                'a8' => rand(2,5),
+                'a9' => rand(2,5),
+                'a10' => rand(2,5),
+                'data_resposta' => '2020-12-01 00:00:00',
+	        ]);
+        }
+        //Diminuindo
+        foreach (range(1001,1100) as $index) {
+            DB::table('avaliacao')->insert([
+	            'id_turma_estudante' => $index,
+                'p1' => 1,
+                'p2' => 1,
+                'p3' => 1,
+                'p4' => 1,
+                'p5' => 1,
+                'p6' => 1,
+                'p7' => 1,
+                'p8' => 1,
+                'p9' => 1,
+                'p10' => 1,
+                'p11' => 1,
+                'p12' => 1,
+                'p13' => 1,
+                'a1' => 1,
+                'a2' => 1,
+                'a3' => 1,
+                'a4' => 1,
+                'a5' => 1,
+                'a6' => 1,
+                'a7' => 1,
+                'a8' => 1,
+                'a9' => 1,
+                'a10' => 1,
+                'data_resposta' => '2020-12-01 00:00:00',
+	        ]);
+        }
     }
 }

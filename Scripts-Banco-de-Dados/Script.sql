@@ -2,7 +2,7 @@
 DROP SCHEMA IF EXISTS trabalho_ihc;
 CREATE SCHEMA trabalho_ihc;
 
-CREATE TABLE IF NOT EXISTS trabalho_ihc.usuario (
+CREATE TABLE IF NOT EXISTS trabalho_ihc.users (
     id INTEGER NOT NULL AUTO_INCREMENT,
     matricula VARCHAR (20) NOT NULL,
     senha VARCHAR (255) NOT NULL,
@@ -15,38 +15,39 @@ CREATE TABLE IF NOT EXISTS trabalho_ihc.estudante(
     id_usuario INTEGER NOT NULL,
     curso VARCHAR (5),
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS trabalho_ihc.professor(
     id_usuario INTEGER NOT NULL,
+    estagio_probatorio BOOLEAN NOT NULL DEFAULT 0,
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES users(id)
 );
 
 /*
 CREATE TABLE IF NOT EXISTS trabalho_ihc.coordenador(
     id_usuario INTEGER NOT NULL,
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS trabalho_ihc.chefe_departamento(
     id_usuario INTEGER NOT NULL,
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS trabalho_ihc.mcaep(
     id_usuario INTEGER NOT NULL,
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS trabalho_ihc.progepe(
     id_usuario INTEGER NOT NULL,
     PRIMARY KEY (id_usuario),
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+    FOREIGN KEY (id_usuario) REFERENCES users(id)
 );
 */
 CREATE TABLE IF NOT EXISTS trabalho_ihc.disciplina (

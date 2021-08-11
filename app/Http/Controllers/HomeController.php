@@ -24,15 +24,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+   
     public function index()
     {
         $usuario = Auth::user();
         $professor = DB::table('professor')->where('id_usuario', '=', $usuario->id)->get();
-        if(!$professor->isEmpty()){
-            return view('professor');
-        } else {
-            return view('home');
+        $estudante = DB::table('estudante')->where('id_usuario', '=', $usuario->id)->get();
+
+        if(!$estudante->isEmpty()){
+            //$disciplinasMatriculadas = 
+            return view('estudante');
         }
-        
+        else if(!$professor->isEmpty()){
+            return view('professor');
+        } /else {
+            return view('home');
+        }/
+
     }
 }

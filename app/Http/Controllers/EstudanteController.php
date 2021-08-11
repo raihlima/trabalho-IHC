@@ -15,6 +15,7 @@ class EstudanteController extends Controller
     public function index()
     {
         //
+        //return view ('avaliacao');
     }
 
     /**
@@ -25,6 +26,7 @@ class EstudanteController extends Controller
     public function create()
     {
         //
+        return view ('estudante');
     }
 
     /**

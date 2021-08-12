@@ -340,6 +340,7 @@ class DatabaseSeeder extends Seeder
                 'a8' => rand(2,5),
                 'a9' => rand(2,5),
                 'a10' => rand(2,5),
+                'concluido' => (1),
                 'data_resposta' => '2020-12-01 00:00:00',
 	        ]);
         }
@@ -370,6 +371,7 @@ class DatabaseSeeder extends Seeder
                 'a8' => 1,
                 'a9' => 1,
                 'a10' => 1,
+                'concluido' => (1),
                 'data_resposta' => '2020-12-01 00:00:00',
 	        ]);
         }

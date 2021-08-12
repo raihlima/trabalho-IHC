@@ -40,7 +40,7 @@ class CreateAvaliacaoTable extends Migration
             $table->integer('a8');
             $table->integer('a9');
             $table->integer('a10');
-            
+            $table->boolean('concluido')->default(0);
             $table->timestamp('data_resposta');
             $table->timestamps();
         });

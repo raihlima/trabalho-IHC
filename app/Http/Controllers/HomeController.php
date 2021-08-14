@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avaliacao;
 use App\Models\Disciplina;
 use App\Models\Professor;
 use App\Models\Turma;
@@ -36,19 +37,21 @@ class HomeController extends Controller
 
         if(!$estudante->isEmpty()){
             //$disciplinasMatriculadas = 
-            $avaliacaoFeita = DB::table('avaliacao as a')
+            $avaliacaoFeita = Avaliacao::get('id_turma_estudante')->toArray();
+            
+          /*$avaliacaoFeita = DB::table('avaliacao as a')
                             ->join('turma_estudante as te','te.id','=','a.id_turma_estudante')
                             ->where('te.id_estudante','=',$usuario->id)
-                            ->select('a.id_turma_estudante')
-                            ->get()->toArray();
+                            //->select('a.id_turma_estudante')
+                            ->get('a.id_turma_estudante')->toArray();
+              */              
                             //dd($avaliacaoFeita);
             $disciplinas = DB::table('turma_estudante as te')
                            ->join('turma as t','t.id','=','te.id_turma')
                            ->join('disciplina as d','t.id_disciplina', '=' ,'d.id')
                            ->join('users as u','t.id_professor', '=' ,'u.id')
-                           ->join('avaliacao as a','te.id', '=' ,'a.id_turma_estudante')
                            ->where('te.id_estudante','=',$usuario->id)
-                           ->where('a.concluido','=','0')
+                           ->whereNotIn('te.id',$avaliacaoFeita)
                            ->orderBy('d.codigo','asc')
                            ->select('te.id_turma','u.name as nome_professor','d.codigo as codigo_disciplina','d.nome as nome_disciplina','t.codigo as codigo_turma')
                            ->get();

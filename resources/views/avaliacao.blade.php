@@ -6,6 +6,18 @@
         <div class="col-auto">
         <form>
         <div class="card">
+                <div class="card-header">{{ __('Informação sobre a avaliação') }}</div>
+                <div class="card-body">
+                
+                    Esta é uma avaliação sobre: <br>
+                    Disciplina: {{$turma[0]->codigo_disciplina}} {{$turma[0]->nome_disciplina}}<br>
+                    Professor: {{$turma[0]->nome_professor}}<br>
+                    Turma: {{$turma[0]->codigo_turma}}<br>
+                
+                </div>
+        </div>
+        <br>
+        <div class="card">
                 <div class="card-header">{{ __('Avaliação sobre o professor') }}</div>
                 <div class="card-body">
                     <table class="table table-striped table-hover table-bordered">

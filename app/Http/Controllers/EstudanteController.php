@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Estudante;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,7 @@ class EstudanteController extends Controller
     public function index()
     {
         //
-        //return view ('avaliacao');
+        return view ('estudante');
     }
 
     /**
@@ -23,12 +25,20 @@ class EstudanteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
-        return view ('estudante');
+        //dd($id);
+        $turma = DB::table('turma_estudante as te')
+                ->join('turma as t','t.id','=','te.id_turma')
+                ->join('disciplina as d','t.id_disciplina', '=' ,'d.id')
+                ->join('users as u','t.id_professor', '=' ,'u.id')
+                ->where('te.id','=',$id)
+                ->select('te.id as te_id','u.name as nome_professor','d.codigo as codigo_disciplina','d.nome as nome_disciplina','t.codigo as codigo_turma')
+                ->get();
+        //dd($turma);
+        //$turma = Campeonato::where('id', '=', $id)->first();
+        return view('avaliacao', compact('turma'));
     }
-
     /**
      * Store a newly created resource in storage.
      *

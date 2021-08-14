@@ -22,9 +22,9 @@
                         <div class="card-body">
                         <div class="list-group">
                             @foreach($disciplinas as $disciplina)
-                            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                                Código: {{$disciplina->codigo_disciplina}}<br>
-                                Disciplina: {{$disciplina->nome_disciplina}}<br>
+                            <a href="{{route ("estudante.avaliacao", $disciplina->te_id )}}" class="list-group-item list-group-item-action" aria-current="true">
+                                Disciplina: {{$disciplina->codigo_disciplina}} - {{$disciplina->nome_disciplina}}<br>
+                                Professor: {{$disciplina->nome_professor}}<br>
                                 Turma: {{$disciplina->codigo_turma}}<br>
                             </a>
                             @endforeach
@@ -48,8 +48,8 @@
                         <div class="card-body">
                         @foreach($disciplinasPendentes as $disciplinaP)
                             <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                                Código: {{$disciplinaP->codigo_disciplina}}<br>
-                                Disciplina: {{$disciplinaP->nome_disciplina}}<br>
+                                Disciplina: {{$disciplinaP->codigo_disciplina}} - {{$disciplinaP->nome_disciplina}}<br>
+                                Professor: {{$disciplinaP->nome_professor}}<br>
                                 Turma: {{$disciplinaP->codigo_turma}}<br>
                             </a>
                             @endforeach
@@ -71,8 +71,8 @@
                         <div class="card-body">
                              @foreach($disciplinasConcluidas as $disciplinaC)
                             <a href="#" class="list-group-item list-group-item-action disabled" aria-current="true">
-                                Código: {{$disciplinaC->codigo_disciplina}}<br>
-                                Disciplina: {{$disciplinaC->nome_disciplina}}<br>
+                                Disciplina: {{$disciplinaC->codigo_disciplina}} - {{$disciplinaC->nome_disciplina}}<br>
+                                Professor: {{$disciplinaC->nome_professor}}<br>
                                 Turma: {{$disciplinaC->codigo_turma}}<br>
                             </a>
                             @endforeach

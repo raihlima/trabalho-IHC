@@ -375,5 +375,18 @@ class DatabaseSeeder extends Seeder
                 'data_resposta' => '2020-12-01 00:00:00',
 	        ]);
         }
+
+            //Criando banco de dados da Progepe
+            foreach (range(1,10) as $index) {
+                DB::table('users')->insert([
+                    'name' => $faker->name,
+                    'matricula' => (1000+$index),
+                    'password' => bcrypt('1234'),
+                ]);
+
+                DB::table('progepe')->insert([
+                    'id_usuario' => (440+$index),
+                ]);
+            }
     }
 }

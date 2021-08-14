@@ -1,5 +1,9 @@
 @extends('layouts.app')
-
+<style>
+    td{
+        cursor: pointer;
+    }
+</style>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -267,3 +271,10 @@
     </div>
 </div>
 @endsection
+
+<script>
+        $(document).on('click','td',function(){
+    $(this).find('input [type="radio"]').prop('checked',true)
+    });
+    
+</script>

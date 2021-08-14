@@ -34,6 +34,7 @@ class HomeController extends Controller
         $usuario = Auth::user();
         $professor = DB::table('professor')->where('id_usuario', '=', $usuario->id)->get();
         $estudante = DB::table('estudante')->where('id_usuario', '=', $usuario->id)->get();
+        $progepe = DB::table('progepe')->where('id_usuario', '=', $usuario->id)->get();
 
         if(!$estudante->isEmpty()){
             //return view ('avaliacao');
@@ -94,9 +95,15 @@ class HomeController extends Controller
                        ->get();
             return view('professor',compact('materia'));
             }
-        } else {
-            return view('home');
+        } else if(!$progepe->isEmpty()){
+            $lista = DB::table('professor as p')
+            ->join('users as u','u.id','=','p.id_usuario')
+            ->where('estagio_probatorio','=','1')
+            ->orderBy('u.name','asc')
+            ->select('u.id','u.name','p.estagio_probatorio')
+            ->get();
+    //dd($lista);
+            return view('lista_professores',compact('lista'));
         }
-
     }
 }

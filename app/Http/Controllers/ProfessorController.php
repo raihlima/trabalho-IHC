@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Professor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProfessorController extends Controller
 {
@@ -17,6 +19,15 @@ class ProfessorController extends Controller
         //
     }
 
+    public function showDisciplinas($id){
+        $materia = DB::table('turma')
+        ->join('disciplina','turma.id_disciplina','=','disciplina.id')
+        ->select('disciplina.nome','disciplina.codigo','turma.codigo as turma_codigo','turma.id')
+        ->where('turma.id_professor','=',$id)
+        ->orderBy('disciplina.codigo','asc')
+        ->get();
+        return view('professor',compact('materia'));
+    }
 
 
     /**
@@ -27,7 +38,7 @@ class ProfessorController extends Controller
     public function create()
     {
         //
-        return view ('professor');
+        //return view ('professor');
     }
 
     /**

@@ -15,7 +15,7 @@
                     <div class="list-group">
                       <div id="listaProfessores">
                             @foreach($lista as $list)
-                            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                            <a href="{{route ("professor.disciplinas", $list->id )}}" class="list-group-item list-group-item-action" aria-current="true">
                                 
                                 {{$list->name}} <br> 
                             </a>

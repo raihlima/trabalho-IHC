@@ -22,6 +22,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('professor',[App\Http\Controllers\ProfessorController::class,'index' ])->name('professor');
+Route::get('professor/{id}', [App\Http\Controllers\ProfessorController::class, 'showDisciplinas'])->name('professor.disciplinas');
+
 
 Route::get('chefe_departamento/professor',[App\Http\Controllers\ChefeDepartamentoController::class,'professor' ])->name('chefe_departamento.professor');
 Route::get('chefe_departamento/lista_professores',[App\Http\Controllers\ChefeDepartamentoController::class,'listaProfessores' ])->name('chefe_departamento.lista_professores');

@@ -12,7 +12,7 @@
                             <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">Novas avaliações </h5>
-      <small>3 days ago</small>
+      <small>{{$disciplinas->count()}} disciplina(s)</small>
     </div>
                             </button>
                         </h2>
@@ -37,7 +37,10 @@
                         <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
                             <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Avaliações pendentes
+                                <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Avaliações Pendentes </h5>
+                                <small>{{$disciplinasPendentes->count()}} disciplina(s)</small>
+                                </div>
                             </button>
                         </h2>
                         </div>
@@ -57,8 +60,10 @@
                         <div class="card-header" id="headingThree">
                         <h2 class="mb-0">
                             <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Avaliações concluídas
-                            <span class="badge bg-primary rounded-pill">14</span>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">Avaliações Finalizadas </h5>
+                                    <small>{{$disciplinasConcluidas->count()}} disciplina(s)</small>
+                                </div>
                             </button>
                         </h2>
                         </div>

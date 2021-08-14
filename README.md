@@ -14,7 +14,7 @@ Instalação do NPM
 sudo apt install npm
 ```
 
-Baixar o composer direto do site do composer.
+Baixar o composer direto do site do composer. https://getcomposer.org/
 
 Depois instalar o composer dentro da pasta do projeto: 
 ```

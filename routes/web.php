@@ -29,6 +29,6 @@ Route::get('chefe_departamento/lista_disciplinas',[App\Http\Controllers\ChefeDep
 
 Route::get('estudante',[App\Http\Controllers\EstudanteController::class,'index' ])->name('estudante');
 Route::get('estudante/avaliacao/{id}', [App\Http\Controllers\EstudanteController::class, 'create'])->name('estudante.avaliacao');
-
+Route::post('estudante/realizar_avaliacao', [App\Http\Controllers\EstudanteController::class, 'store'])->name('estudante.realizar_avaliacao');
 
 Route::get('resultado_avaliacao',[App\Http\Controllers\ResultadoAvaliacaoController::class,'index' ])->name('resultado_avaliacao');

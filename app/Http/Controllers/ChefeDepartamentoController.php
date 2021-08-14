@@ -18,6 +18,35 @@ class ChefeDepartamentoController extends Controller
         return view('chefe');
     }
 
+    public function professor(){
+        $usuario = Auth::user();
+        $materia = DB::table('turma')
+        ->join('disciplina','turma.id_disciplina','=','disciplina.id')
+        ->select('disciplina.nome','disciplina.codigo','turma.codigo as turma_codigo','turma.id')
+        ->where('turma.id_professor','=',$usuario->id)
+        ->orderBy('disciplina.codigo','asc')
+        ->get();
+        return view('professor',compact('materia'));
+    }
+
+    public function listaProfessores(){
+        $lista = DB::table('professor as p')
+                ->join('users as u','u.id','=','p.id_usuario')
+                ->orderBy('u.name','asc')
+                ->select('u.id','u.name','p.estagio_probatorio')
+                ->get();
+        //dd($lista);
+        return view('lista_professores',compact('lista'));
+    }
+
+    public function listaDisciplinas(){
+        $lista = DB::table('disciplina as d')
+                ->orderBy('d.codigo','asc')
+                ->get();
+        //dd($lista);
+        return view('lista_disciplinas',compact('lista'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

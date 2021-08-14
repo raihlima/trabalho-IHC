@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="list-group">
                             @foreach($materia as $materias)
-                            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                            <a href="{{route ("resultado_avaliacao", $materias->id )}}" class="list-group-item list-group-item-action" aria-current="true">
                                 
                                 Codigo: {{$materias->codigo}} <br> 
                                 Disciplina: {{$materias->nome}}<br>

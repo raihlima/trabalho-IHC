@@ -6,7 +6,7 @@
 
 Instalação do PHP: 
 ```
-sudo apt install curl php7.4 php7.4-curl php7.4-mbstring php7.4-xml git
+sudo apt install curl php7.4 php7.4-curl php7.4-mbstring php7.4-xml php7.4-mysql git
 ``` 
 
 Instalação do NPM

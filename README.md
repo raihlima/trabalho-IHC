@@ -1,4 +1,4 @@
-# Trabalho IHC
+# Trabalho de IHC
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/raihlima/trabalho-ihc)
 
@@ -6,7 +6,7 @@
 
 Por favor, siga os passos listados abaixo.
 
-**OBS:** Após rodar pela primeira vez, basta executar um git pull para gareantir que está com a última versão do código e então executar os comandos da seção "Executar o projeto"
+**OBS:** Após rodar pela primeira vez, basta executar um git pull para garantir que está com a última versão do código e então executar os comandos da seção "Executar o projeto"
 
 ## Instalação de requisitos
 

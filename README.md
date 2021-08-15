@@ -57,7 +57,29 @@ cp .env.example .env
 
 ### - Banco de dados
 
+Logar no MySQL:
+```
+sudo mysql
+``` 
 
+E então criar um usuário na base:
+<pre>
+create user '<b>USUARIO</b>'@'localhost' identified by '<b>SENHA</b>';
+</pre>
+
+Dar os privilégios de administrador das bases para o novo usuário:
+<pre>
+grant all privileges on *.* to '<b>USUARIO</b>'@'localhost';
+</pre>
+
+Atualizar as permissões das bases:
+```
+flush privileges;
+```
+Criar uma nova base de dados para o projeto:
+<pre>
+create database <b>DATABASE</b>;
+</pre>
 
 
 ### - Artisan/Laravel

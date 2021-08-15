@@ -20,6 +20,8 @@ Instalação do NPM:
 sudo apt install npm
 ```
 
+## Repostório
+
 Clonar o repositório:
 ```
 git clone https://github.com/raihlima/trabalho-ihc.git
@@ -32,6 +34,8 @@ cd trabalho-ihc
 
 ## Setup inicial
 
+### - Composer
+
 Baixar o composer direto do site do composer. https://getcomposer.org/
 
 Depois instalar o composer dentro da pasta do projeto: 
@@ -39,7 +43,14 @@ Depois instalar o composer dentro da pasta do projeto:
 composer install
 ``` 
 
-Se necessário copie o `.env.example` e renomeie para `.env`
+### - Environment
+
+Se necessário copie o `.env.example` e renomeie para `.env` com o comando:
+```
+cp .env.example .env
+``` 
+
+### - Artisan/Laravel
 
 Após isso:
 ```

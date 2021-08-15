@@ -66,7 +66,7 @@ class EstudanteController extends Controller
             //dd($disciplinas);
             return view('estudante', compact('disciplinas','disciplinasPendentes','disciplinasConcluidas'));
         } else {
-            
+            return abort(404,'Não encontrado');
         }
         
     }

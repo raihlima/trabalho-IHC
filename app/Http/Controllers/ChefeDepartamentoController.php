@@ -32,21 +32,33 @@ class ChefeDepartamentoController extends Controller
     }
 
     public function listaProfessores(){
-        $lista = DB::table('professor as p')
-                ->join('users as u','u.id','=','p.id_usuario')
-                ->orderBy('u.name','asc')
-                ->select('u.id','u.name','p.estagio_probatorio')
-                ->get();
-        //dd($lista);
-        return view('lista_professores',compact('lista'));
+        $usuario = Auth::user();
+        $chefe = DB::table('chefe_departamento')->where('id_usuario', '=', $usuario->id)->get();
+        if(!$chefe->isEmpty()){
+            $lista = DB::table('professor as p')
+                    ->join('users as u','u.id','=','p.id_usuario')
+                    ->orderBy('u.name','asc')
+                    ->select('u.id','u.name','p.estagio_probatorio')
+                    ->get();
+            //dd($lista);
+            return view('lista_professores',compact('lista'));
+        } else {
+            return abort (404,'Não encontrado');
+        }
     }
 
     public function listaDisciplinas(){
-        $lista = DB::table('disciplina as d')
-                ->orderBy('d.codigo','asc')
-                ->get();
-        //dd($lista);
-        return view('lista_disciplinas',compact('lista'));
+        $usuario = Auth::user();
+        $chefe = DB::table('chefe_departamento')->where('id_usuario', '=', $usuario->id)->get();
+        if(!$chefe->isEmpty()){
+            $lista = DB::table('disciplina as d')
+                    ->orderBy('d.codigo','asc')
+                    ->get();
+            //dd($lista);
+            return view('lista_disciplinas',compact('lista'));
+        } else {
+            return abort (404,'Não encontrado');
+        }
     }
 
     /**

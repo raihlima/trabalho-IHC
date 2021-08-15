@@ -20,6 +20,11 @@ Instalação do NPM:
 sudo apt install npm
 ```
 
+Instalação do banco:
+```
+sudo apt install mysql
+```
+
 ## Repostório
 
 Clonar o repositório:
@@ -45,19 +50,26 @@ composer install
 
 ### - Environment
 
-Se necessário copie o `.env.example` e renomeie para `.env` com o comando:
+Se necessário copie o arquivo `.env.example` e renomeie para `.env` com o comando:
 ```
 cp .env.example .env
 ``` 
 
+### - Banco de dados
+
+
+
+
 ### - Artisan/Laravel
 
-Após isso:
+Gerar uma nova chave com o comando:
 ```
 php artisan key:generate
 ```
 
-Configure o arquivo `.env` conforme o banco de dados.
+Configurar o arquivo `.env` conforme o banco de dados local (Eg. credenciais de acesso, nome da base, etc).
+
+Executar a migração do schema da base de dados:
 ```
 php artisan migrate --seed
 ```

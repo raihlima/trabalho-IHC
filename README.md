@@ -41,12 +41,16 @@ cd trabalho-ihc
 
 ### - Composer
 
-Baixar o composer direto do site do composer. https://getcomposer.org/
+Acessar o [site do composer](https://getcomposer.org/download/) e seguir as instruções (executar os quatro comandos da primeira caixa de códigos).
 
 Depois instalar o composer dentro da pasta do projeto: 
 ```
 composer install
 ``` 
+Se o comando acima falhar, tentar esse outro:
+```
+php composer.phar install
+```
 
 ### - Environment
 
@@ -76,11 +80,21 @@ Atualizar as permissões das bases:
 ```
 flush privileges;
 ```
+
 Criar uma nova base de dados para o projeto:
 <pre>
 create database <b>DATABASE</b>;
 </pre>
 
+Se tudo correu bem, sair do MySQL:
+```
+exit
+```
+
+Então, configurar o arquivo `.env` conforme o banco de dados local (Eg. credenciais de acesso, nome da base, etc):
+```
+nano .env
+```
 
 ### - Artisan/Laravel
 
@@ -88,8 +102,6 @@ Gerar uma nova chave com o comando:
 ```
 php artisan key:generate
 ```
-
-Configurar o arquivo `.env` conforme o banco de dados local (Eg. credenciais de acesso, nome da base, etc).
 
 Executar a migração do schema da base de dados:
 ```

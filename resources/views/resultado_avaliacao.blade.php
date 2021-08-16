@@ -30,7 +30,7 @@
                          </thead>
                         <tbody>
                             @foreach($avaliacao as $key => $ava)
-                                <tr class='clickable-row' data-href='{{route ("chefe_departamento.lista_professores")}}'>
+                                <tr>
                                     <td>D{{$key+1}}</td>
                                     <td>{{$ava->curso}}</td>
                                     <td>{{$ava->p1}}</td>
@@ -48,6 +48,40 @@
                                     <td>{{$ava->p13}}</td>
                                 </tr>
                             @endforeach
+                            <tr class="table-success">
+                                    <td>Média</td>
+                                    <td>Com Outlier D2</td>
+                                    <td>{{$media[0]}}</td>
+                                    <td>{{$media[1]}}</td>
+                                    <td>{{$media[2]}}</td>
+                                    <td>{{$media[3]}}</td>
+                                    <td>{{$media[4]}}</td>
+                                    <td>{{$media[5]}}</td>
+                                    <td>{{$media[6]}}</td>
+                                    <td>{{$media[7]}}</td>
+                                    <td>{{$media[8]}}</td>
+                                    <td>{{$media[9]}}</td>
+                                    <td>{{$media[10]}}</td>
+                                    <td>{{$media[11]}}</td>
+                                    <td>{{$media[12]}}</td>
+                            </tr>
+                            <tr class="table-info">
+                                    <td>Média</td>
+                                    <td>Com Outlier D2%</td>
+                                    <td>{{$mediaPor[0]}}</td>
+                                    <td>{{$mediaPor[1]}}</td>
+                                    <td>{{$mediaPor[2]}}</td>
+                                    <td>{{$mediaPor[3]}}</td>
+                                    <td>{{$mediaPor[4]}}</td>
+                                    <td>{{$mediaPor[5]}}</td>
+                                    <td>{{$mediaPor[6]}}</td>
+                                    <td>{{$mediaPor[7]}}</td>
+                                    <td>{{$mediaPor[8]}}</td>
+                                    <td>{{$mediaPor[9]}}</td>
+                                    <td>{{$mediaPor[10]}}</td>
+                                    <td>{{$mediaPor[11]}}</td>
+                                    <td>{{$mediaPor[12]}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

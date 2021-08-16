@@ -82,6 +82,40 @@
                                     <td>{{$mediaPor[11]}}</td>
                                     <td>{{$mediaPor[12]}}</td>
                             </tr>
+                            <tr class="table-success">
+                                    <td>Média</td>
+                                    <td>Sem Outlier D2</td>
+                                    <td>{{$mediaSemOutlier[0]}}</td>
+                                    <td>{{$mediaSemOutlier[1]}}</td>
+                                    <td>{{$mediaSemOutlier[2]}}</td>
+                                    <td>{{$mediaSemOutlier[3]}}</td>
+                                    <td>{{$mediaSemOutlier[4]}}</td>
+                                    <td>{{$mediaSemOutlier[5]}}</td>
+                                    <td>{{$mediaSemOutlier[6]}}</td>
+                                    <td>{{$mediaSemOutlier[7]}}</td>
+                                    <td>{{$mediaSemOutlier[8]}}</td>
+                                    <td>{{$mediaSemOutlier[9]}}</td>
+                                    <td>{{$mediaSemOutlier[10]}}</td>
+                                    <td>{{$mediaSemOutlier[11]}}</td>
+                                    <td>{{$mediaSemOutlier[12]}}</td>
+                            </tr>
+                            <tr class="table-info">
+                                    <td>Média</td>
+                                    <td>Sem Outlier D2%</td>
+                                    <td>{{$mediaSemOutlierPor[0]}}</td>
+                                    <td>{{$mediaSemOutlierPor[1]}}</td>
+                                    <td>{{$mediaSemOutlierPor[2]}}</td>
+                                    <td>{{$mediaSemOutlierPor[3]}}</td>
+                                    <td>{{$mediaSemOutlierPor[4]}}</td>
+                                    <td>{{$mediaSemOutlierPor[5]}}</td>
+                                    <td>{{$mediaSemOutlierPor[6]}}</td>
+                                    <td>{{$mediaSemOutlierPor[7]}}</td>
+                                    <td>{{$mediaSemOutlierPor[8]}}</td>
+                                    <td>{{$mediaSemOutlierPor[9]}}</td>
+                                    <td>{{$mediaSemOutlierPor[10]}}</td>
+                                    <td>{{$mediaSemOutlierPor[11]}}</td>
+                                    <td>{{$mediaSemOutlierPor[12]}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

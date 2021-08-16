@@ -25,8 +25,11 @@ class ResultadoAvaliacaoController extends Controller
                     ->join('turma_estudante as te','a.id_turma_estudante','=','te.id')
                     ->join('estudante as e','te.id_estudante','=','e.id_usuario')
                     ->where('te.id_turma','=',$id)
-                    ->get();
+                    ->get()->shuffle();
         //dd($avaliacao);
+
+        
+
         return view ('resultado_avaliacao',compact('avaliacao'));
     }
 }

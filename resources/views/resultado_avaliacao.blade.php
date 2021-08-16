@@ -29,9 +29,9 @@
                             </tr>
                          </thead>
                         <tbody>
-                            @foreach($avaliacao as $ava)
+                            @foreach($avaliacao as $key => $ava)
                                 <tr class='clickable-row' data-href='{{route ("chefe_departamento.lista_professores")}}'>
-                                    <td>{{$ava->id_usuario}}</td>
+                                    <td>D{{$key+1}}</td>
                                     <td>{{$ava->curso}}</td>
                                     <td>{{$ava->p1}}</td>
                                     <td>{{$ava->p2}}</td>

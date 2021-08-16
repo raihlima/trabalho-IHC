@@ -12,6 +12,7 @@ class Avaliacao extends Model
     protected $fillable = [
         'id',
         'id_turma_estudante',
+        'concluido',
         'p1',
         'p2',
         'p3',

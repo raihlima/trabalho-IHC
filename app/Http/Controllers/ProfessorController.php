@@ -29,11 +29,10 @@ class ProfessorController extends Controller
                        ->orderBy('disciplina.codigo','asc')
                        ->get();
             return view('professor',compact('materia'));
-        
         } else {
-            return abort (404, 'Não encontrado');
+            return abort (404);
+            //return abort(404, 'Nao encontrado',[ "refresh:5;url=wherever.php" ]);
         }
-
     }
 
     public function showDisciplinas($id){
@@ -52,7 +51,7 @@ class ProfessorController extends Controller
             ->get();
             return view('professor',compact('materia'));
         } else {
-            return abort (404, 'Não encontrado');
+            return abort (404, 'Nao encontrado');
         }
     }
 

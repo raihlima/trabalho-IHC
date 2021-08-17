@@ -93,8 +93,84 @@ class ResultadoAvaliacaoController extends Controller
         $mediaSemOutlier = self::retornaMedia($matrizSemOutlier);
         $mediaSemOutlierPor = self::retornaMediaPor($matrizSemOutlier);
 
-        //dd($mediaSemOutlierPor);
-        return view ('resultado_avaliacao',compact('avaliacao','media','mediaPor','mediaSemOutlier','mediaSemOutlierPor'));
+        
+        $notasCursos = self::buscaNotaCurso($id);
+        $mediaCursos = self::retornaMediaCursos($notasCursos);
+        //dd($mediaCursos);
+        return view ('resultado_avaliacao',compact('avaliacao','media','mediaPor','mediaSemOutlier','mediaSemOutlierPor','mediaCursos','notasCursos'));
+    }
+
+    private function buscaNotaCurso($id){
+        $busca = array();
+        $busca[0] = self::buscaNotaCursoAux('CC-D',$id);
+        $busca[1] = self::buscaNotaCursoAux('CC-N',$id);
+        $busca[2] = self::buscaNotaCursoAux('SI',$id);
+        $busca[3] = self::buscaNotaCursoAux('EC',$id);
+        return $busca;
+    }
+
+    private function buscaNotaCursoAux($curso,$id){
+        $avaliacao = DB::table('avaliacao as a')
+        ->join('turma_estudante as te','a.id_turma_estudante','=','te.id')
+        ->join('estudante as e','te.id_estudante','=','e.id_usuario')
+        ->where('te.id_turma','=',$id)
+        ->where('e.curso','=',$curso)
+        ->get()->shuffle();
+
+        return $avaliacao;
+    }
+
+    private function retornaMediaCursos($notasCursos){
+        $media = array ();
+        $matriz = array();
+        $matriz[0] = self::retornaMatriz($notasCursos[0]);
+        $matriz[1] = self::retornaMatriz($notasCursos[1]);
+        $matriz[2] = self::retornaMatriz($notasCursos[2]);
+        $matriz[3] = self::retornaMatriz($notasCursos[3]);
+
+        $media[0][0] = self::retornaMedia($matriz[0]);
+        $media[0][1] = self::retornaMedia($matriz[1]);
+        $media[0][2] = self::retornaMedia($matriz[2]);
+        $media[0][3] = self::retornaMedia($matriz[3]);
+
+        $media[1][0] = self::retornaMediaPor($matriz[0]);
+        $media[1][1] = self::retornaMediaPor($matriz[1]);
+        $media[1][2] = self::retornaMediaPor($matriz[2]);
+        $media[1][3] = self::retornaMediaPor($matriz[3]);
+
+        $media[2][0] = self::retornaMedia(self::retornaMatrizSemOutlier($matriz[0]));
+        $media[2][1] = self::retornaMedia(self::retornaMatrizSemOutlier($matriz[1]));
+        $media[2][2] = self::retornaMedia(self::retornaMatrizSemOutlier($matriz[2]));
+        $media[2][3] = self::retornaMedia(self::retornaMatrizSemOutlier($matriz[3]));
+
+        $media[3][0] = self::retornaMediaPor(self::retornaMatrizSemOutlier($matriz[0]));
+        $media[3][1] = self::retornaMediaPor(self::retornaMatrizSemOutlier($matriz[1]));
+        $media[3][2] = self::retornaMediaPor(self::retornaMatrizSemOutlier($matriz[2]));
+        $media[3][3] = self::retornaMediaPor(self::retornaMatrizSemOutlier($matriz[3]));
+
+        return $media;
+    }
+
+    private function retornaMatriz($curso){
+        $media = array ();
+        $matriz = array();
+        foreach ($curso as $cont => $ava){
+            $matriz[0][$cont] = $ava->p1;
+            $matriz[1][$cont] = $ava->p2;
+            $matriz[2][$cont] = $ava->p3;
+            $matriz[3][$cont] = $ava->p4;
+            $matriz[4][$cont] = $ava->p5;
+            $matriz[5][$cont] = $ava->p6;
+            $matriz[6][$cont] = $ava->p7;
+            $matriz[7][$cont] = $ava->p8;
+            $matriz[8][$cont] = $ava->p9;
+            $matriz[9][$cont] = $ava->p10;
+            $matriz[10][$cont] = $ava->p11;
+            $matriz[11][$cont] = $ava->p12;
+            $matriz[12][$cont] = $ava->p13;
+        }
+        //$media = self::retornaMedia($matriz);
+        return $matriz;
     }
 
     private function retornaMedia($arr){

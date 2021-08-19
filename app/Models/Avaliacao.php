@@ -43,5 +43,31 @@ class Avaliacao extends Model
         'data_resposta',
     ];
 
+    const PERGUNTA = [
+        'O professor disponibilizou o plano de curso da disciplina na primeira semana de aula?',
+        'O professor é pontual?',
+        'O professor é assíduo às aulas?',
+        'O professor usa todo o tempo de aula?',
+        'O professor está disponível no horário de atendimento?',
+        'O professor tira dúvidas em sala de aula?',
+        'O professor apresenta os conteúdos da disciplina de forma clara?',
+        'O professor demonstra dominar o conteúdo da disciplina?',
+        'O material utilizado em aula é atualizado?',
+        'O professor apresenta exemplos em aula e faz ou propõe exercícios e/ou trabalhos práticos?',
+        'As avaliações refletem o conteúdo apresentado em sala?',
+        'As notas das avaliações foram publicadas até três dias antes da avaliação seguinte?',
+        'O conteúdo programático da disciplina foi cumprido?',
+        'Você acha que a bibliografia sugerida no Plano de Curso é adequada ao conteúdo da disciplina?',
+        'Os objetivos da disciplina foram atendidos?',
+        'Você considera a ementa da disciplina adequada ao curso?',
+        'Você é pontual?',
+        'Você é assíduo às aulas?',
+        'Você procurou o professor, tutor ou monitor da disciplina para tirar dúvidas ao longo do semestre?',
+        'Você considera que possuía a base teórica necessária para cursar esta disciplina?',
+        'Você faz as atividades práticas propostas pelo professor?',
+        'Você considera que se dedicou suficientemente à disciplina?',
+        'Na sua opnião, suas notas refletem de modo fiel o conhecimento que você adquiriu ao longo da disciplina?',
+    ];
+
     protected $table = 'avaliacao';
 }

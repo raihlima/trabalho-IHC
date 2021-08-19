@@ -118,6 +118,8 @@
                             </tr>
                         </tbody>
                     </table>
+                    <br>
+
                 </div>
             </div>
             <br>
@@ -151,116 +153,122 @@
                     <div class="tab-content" id="myTabContent">
                         @if(!$notasCursos[0]->isEmpty())
                         <div class="tab-pane fade show active" id="CC-D" role="tabpanel" aria-labelledby="CC-D-tab">
-                            <table class="table table-striped table-hover table-bordered">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>Curso</td>
-                                        <td>A</td>
-                                        <td>B</td>
-                                        <td>C</td>
-                                        <td>D</td>
-                                        <td>E</td>
-                                        <td>F</td>
-                                        <td>G</td>
-                                        <td>H</td>
-                                        <td>I</td>
-                                        <td>J</td>
-                                        <td>K</td>
-                                        <td>L</td>
-                                        <td>M</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($notasCursos[0] as $key => $ava)
+                            <div>
+                                <table class="table table-striped table-hover table-bordered">
+                                    <thead class="table-dark">
                                         <tr>
-                                            <td>D{{$key+1}}</td>
-                                            <td>{{$ava->curso}}</td>
-                                            <td>{{$ava->p1}}</td>
-                                            <td>{{$ava->p2}}</td>
-                                            <td>{{$ava->p3}}</td>
-                                            <td>{{$ava->p4}}</td>
-                                            <td>{{$ava->p5}}</td>
-                                            <td>{{$ava->p6}}</td>
-                                            <td>{{$ava->p7}}</td>
-                                            <td>{{$ava->p8}}</td>
-                                            <td>{{$ava->p9}}</td>
-                                            <td>{{$ava->p10}}</td>
-                                            <td>{{$ava->p11}}</td>
-                                            <td>{{$ava->p12}}</td>
-                                            <td>{{$ava->p13}}</td>
+                                            <td>ID</td>
+                                            <td>Curso</td>
+                                            <td>A</td>
+                                            <td>B</td>
+                                            <td>C</td>
+                                            <td>D</td>
+                                            <td>E</td>
+                                            <td>F</td>
+                                            <td>G</td>
+                                            <td>H</td>
+                                            <td>I</td>
+                                            <td>J</td>
+                                            <td>K</td>
+                                            <td>L</td>
+                                            <td>M</td>
                                         </tr>
-                                    @endforeach
-                                        <tr class="table-success">
-                                            <td>Média</td>
-                                            <td>Com Outlier D2</td>
-                                            <td>{{$mediaCursos[0][0][0]}}</td>
-                                            <td>{{$mediaCursos[0][0][1]}}</td>
-                                            <td>{{$mediaCursos[0][0][2]}}</td>
-                                            <td>{{$mediaCursos[0][0][3]}}</td>
-                                            <td>{{$mediaCursos[0][0][4]}}</td>
-                                            <td>{{$mediaCursos[0][0][5]}}</td>
-                                            <td>{{$mediaCursos[0][0][6]}}</td>
-                                            <td>{{$mediaCursos[0][0][7]}}</td>
-                                            <td>{{$mediaCursos[0][0][8]}}</td>
-                                            <td>{{$mediaCursos[0][0][9]}}</td>
-                                            <td>{{$mediaCursos[0][0][10]}}</td>
-                                            <td>{{$mediaCursos[0][0][11]}}</td>
-                                            <td>{{$mediaCursos[0][0][12]}}</td>
-                                        </tr>
-                                        <tr class="table-info">
-                                            <td>Média</td>
-                                            <td>Com Outlier D2%</td>
-                                            <td>{{$mediaCursos[1][0][0]}}</td>
-                                            <td>{{$mediaCursos[1][0][1]}}</td>
-                                            <td>{{$mediaCursos[1][0][2]}}</td>
-                                            <td>{{$mediaCursos[1][0][3]}}</td>
-                                            <td>{{$mediaCursos[1][0][4]}}</td>
-                                            <td>{{$mediaCursos[1][0][5]}}</td>
-                                            <td>{{$mediaCursos[1][0][6]}}</td>
-                                            <td>{{$mediaCursos[1][0][7]}}</td>
-                                            <td>{{$mediaCursos[1][0][8]}}</td>
-                                            <td>{{$mediaCursos[1][0][9]}}</td>
-                                            <td>{{$mediaCursos[1][0][10]}}</td>
-                                            <td>{{$mediaCursos[1][0][11]}}</td>
-                                            <td>{{$mediaCursos[1][0][12]}}</td>
-                                        </tr>
-                                        <tr class="table-success">
-                                            <td>Média</td>
-                                            <td>Sem Outlier D2</td>
-                                            <td>{{$mediaCursos[2][0][0]}}</td>
-                                            <td>{{$mediaCursos[2][0][1]}}</td>
-                                            <td>{{$mediaCursos[2][0][2]}}</td>
-                                            <td>{{$mediaCursos[2][0][3]}}</td>
-                                            <td>{{$mediaCursos[2][0][4]}}</td>
-                                            <td>{{$mediaCursos[2][0][5]}}</td>
-                                            <td>{{$mediaCursos[2][0][6]}}</td>
-                                            <td>{{$mediaCursos[2][0][7]}}</td>
-                                            <td>{{$mediaCursos[2][0][8]}}</td>
-                                            <td>{{$mediaCursos[2][0][9]}}</td>
-                                            <td>{{$mediaCursos[2][0][10]}}</td>
-                                            <td>{{$mediaCursos[2][0][11]}}</td>
-                                            <td>{{$mediaCursos[2][0][12]}}</td>
-                                        </tr>
-                                        <tr class="table-info">
-                                            <td>Média</td>
-                                            <td>Sem Outlier D2%</td>
-                                            <td>{{$mediaCursos[3][0][0]}}</td>
-                                            <td>{{$mediaCursos[3][0][1]}}</td>
-                                            <td>{{$mediaCursos[3][0][2]}}</td>
-                                            <td>{{$mediaCursos[3][0][3]}}</td>
-                                            <td>{{$mediaCursos[3][0][4]}}</td>
-                                            <td>{{$mediaCursos[3][0][5]}}</td>
-                                            <td>{{$mediaCursos[3][0][6]}}</td>
-                                            <td>{{$mediaCursos[3][0][7]}}</td>
-                                            <td>{{$mediaCursos[3][0][8]}}</td>
-                                            <td>{{$mediaCursos[3][0][9]}}</td>
-                                            <td>{{$mediaCursos[3][0][10]}}</td>
-                                            <td>{{$mediaCursos[3][0][11]}}</td>
-                                            <td>{{$mediaCursos[3][0][12]}}</td>
-                                        </tr>
-                                <tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($notasCursos[0] as $key => $ava)
+                                            <tr>
+                                                <td>D{{$key+1}}</td>
+                                                <td>{{$ava->curso}}</td>
+                                                <td>{{$ava->p1}}</td>
+                                                <td>{{$ava->p2}}</td>
+                                                <td>{{$ava->p3}}</td>
+                                                <td>{{$ava->p4}}</td>
+                                                <td>{{$ava->p5}}</td>
+                                                <td>{{$ava->p6}}</td>
+                                                <td>{{$ava->p7}}</td>
+                                                <td>{{$ava->p8}}</td>
+                                                <td>{{$ava->p9}}</td>
+                                                <td>{{$ava->p10}}</td>
+                                                <td>{{$ava->p11}}</td>
+                                                <td>{{$ava->p12}}</td>
+                                                <td>{{$ava->p13}}</td>
+                                            </tr>
+                                        @endforeach
+                                            <tr class="table-success">
+                                                <td>Média</td>
+                                                <td>Com Outlier D2</td>
+                                                <td>{{$mediaCursos[0][0][0]}}</td>
+                                                <td>{{$mediaCursos[0][0][1]}}</td>
+                                                <td>{{$mediaCursos[0][0][2]}}</td>
+                                                <td>{{$mediaCursos[0][0][3]}}</td>
+                                                <td>{{$mediaCursos[0][0][4]}}</td>
+                                                <td>{{$mediaCursos[0][0][5]}}</td>
+                                                <td>{{$mediaCursos[0][0][6]}}</td>
+                                                <td>{{$mediaCursos[0][0][7]}}</td>
+                                                <td>{{$mediaCursos[0][0][8]}}</td>
+                                                <td>{{$mediaCursos[0][0][9]}}</td>
+                                                <td>{{$mediaCursos[0][0][10]}}</td>
+                                                <td>{{$mediaCursos[0][0][11]}}</td>
+                                                <td>{{$mediaCursos[0][0][12]}}</td>
+                                            </tr>
+                                            <tr class="table-info">
+                                                <td>Média</td>
+                                                <td>Com Outlier D2%</td>
+                                                <td>{{$mediaCursos[1][0][0]}}</td>
+                                                <td>{{$mediaCursos[1][0][1]}}</td>
+                                                <td>{{$mediaCursos[1][0][2]}}</td>
+                                                <td>{{$mediaCursos[1][0][3]}}</td>
+                                                <td>{{$mediaCursos[1][0][4]}}</td>
+                                                <td>{{$mediaCursos[1][0][5]}}</td>
+                                                <td>{{$mediaCursos[1][0][6]}}</td>
+                                                <td>{{$mediaCursos[1][0][7]}}</td>
+                                                <td>{{$mediaCursos[1][0][8]}}</td>
+                                                <td>{{$mediaCursos[1][0][9]}}</td>
+                                                <td>{{$mediaCursos[1][0][10]}}</td>
+                                                <td>{{$mediaCursos[1][0][11]}}</td>
+                                                <td>{{$mediaCursos[1][0][12]}}</td>
+                                            </tr>
+                                            <tr class="table-success">
+                                                <td>Média</td>
+                                                <td>Sem Outlier D2</td>
+                                                <td>{{$mediaCursos[2][0][0]}}</td>
+                                                <td>{{$mediaCursos[2][0][1]}}</td>
+                                                <td>{{$mediaCursos[2][0][2]}}</td>
+                                                <td>{{$mediaCursos[2][0][3]}}</td>
+                                                <td>{{$mediaCursos[2][0][4]}}</td>
+                                                <td>{{$mediaCursos[2][0][5]}}</td>
+                                                <td>{{$mediaCursos[2][0][6]}}</td>
+                                                <td>{{$mediaCursos[2][0][7]}}</td>
+                                                <td>{{$mediaCursos[2][0][8]}}</td>
+                                                <td>{{$mediaCursos[2][0][9]}}</td>
+                                                <td>{{$mediaCursos[2][0][10]}}</td>
+                                                <td>{{$mediaCursos[2][0][11]}}</td>
+                                                <td>{{$mediaCursos[2][0][12]}}</td>
+                                            </tr>
+                                            <tr class="table-info">
+                                                <td>Média</td>
+                                                <td>Sem Outlier D2%</td>
+                                                <td>{{$mediaCursos[3][0][0]}}</td>
+                                                <td>{{$mediaCursos[3][0][1]}}</td>
+                                                <td>{{$mediaCursos[3][0][2]}}</td>
+                                                <td>{{$mediaCursos[3][0][3]}}</td>
+                                                <td>{{$mediaCursos[3][0][4]}}</td>
+                                                <td>{{$mediaCursos[3][0][5]}}</td>
+                                                <td>{{$mediaCursos[3][0][6]}}</td>
+                                                <td>{{$mediaCursos[3][0][7]}}</td>
+                                                <td>{{$mediaCursos[3][0][8]}}</td>
+                                                <td>{{$mediaCursos[3][0][9]}}</td>
+                                                <td>{{$mediaCursos[3][0][10]}}</td>
+                                                <td>{{$mediaCursos[3][0][11]}}</td>
+                                                <td>{{$mediaCursos[3][0][12]}}</td>
+                                            </tr>
+                                    <tbody>
+                                </table>
+                            </div>
+                            <div>
+
+                                <div id="chart_div" style="width: 900px; height: 300px;"></div>
+                            </div>
                         </div>
                         @endif
                         @if(!$notasCursos[1]->isEmpty())
@@ -612,3 +620,42 @@
     </div>
 </div>
 @endsection
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+var graficoCCD = <?php echo $graficoCCD; ?>;
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+    
+    var data = google.visualization.arrayToDataTable(graficoCCD);
+    /*
+      var data = google.visualization.arrayToDataTable([
+        ['City', '2010 Population',],
+        ['New York City, NY', 8175000],
+        ['Los Angeles, CA', 3792000],
+        ['Chicago, IL', 2695000],
+        ['Houston, TX', 2099000],
+        ['Philadelphia, PA', 1526000]
+      ]);
+*/
+      var options = {
+        title: 'Resultado da avaliação discente',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Média',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'Pergunta'
+        }
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+</script>

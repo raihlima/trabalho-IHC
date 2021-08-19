@@ -97,7 +97,22 @@ class ResultadoAvaliacaoController extends Controller
         $notasCursos = self::buscaNotaCurso($id);
         $mediaCursos = self::retornaMediaCursos($notasCursos);
         //dd($mediaCursos);
-        return view ('resultado_avaliacao',compact('avaliacao','media','mediaPor','mediaSemOutlier','mediaSemOutlierPor','mediaCursos','notasCursos'));
+        $graficoCCD = self::preencheGraficoCurso($mediaCursos);
+        return view ('resultado_avaliacao',compact('avaliacao','media','mediaPor','mediaSemOutlier','mediaSemOutlierPor','mediaCursos','notasCursos'))
+                    ->with('graficoCCD',json_encode($graficoCCD));
+    }
+
+
+    private function preencheGraficoCurso ($mediaCursos){
+        //dd($mediaCursos);
+        $res[] = ['Pergunta', 'Média'];
+        $pergunta = Avaliacao::PERGUNTA;
+        //dd($pergunta);
+        foreach ($mediaCursos[0][0] as $key => $val) {
+            $res[++$key] = [$pergunta[$key], (double)$val];
+        }
+        //dd($res);
+        return $res;
     }
 
     private function buscaNotaCurso($id){
@@ -182,7 +197,8 @@ class ResultadoAvaliacaoController extends Controller
                 $mediaSemOutlier[$i] = $mediaSemOutlier[$i] + $arr[$i][$key];
                 $cont= $cont +1;
             }
-            $mediaSemOutlier[$i] = number_format($mediaSemOutlier[$i]/$cont,2,',','');
+            $mediaSemOutlier[$i] = $mediaSemOutlier[$i]/$cont;
+            //$mediaSemOutlier[$i] = number_format($mediaSemOutlier[$i]/$cont,2,',','');
         }
         return $mediaSemOutlier;
     }

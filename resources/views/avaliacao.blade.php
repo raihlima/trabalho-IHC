@@ -246,7 +246,15 @@
                                         <td>Você faz as atividades práticas propostas pelo professor?</td>
                                         <td id="rad"><input type="radio" value="1" name="a8" required></td>
                                         <td id="rad"><input type="radio" value="2" name="a8"></td>
-                                        <td id="rad"><input type="radio" value="3" name="a8"></td>
+                                        <td i/* bootstrap hack: fix content width inside hidden tabs */
+.tab-content > .tab-pane:not(.active),
+.pill-content > .pill-pane:not(.active) {
+    display: block;
+    height: 0;
+    overflow-y: hidden;
+} 
+/* bootstrap hack end */
+d="rad"><input type="radio" value="3" name="a8"></td>
                                         <td id="rad"><input type="radio" value="4" name="a8"></td>
                                         <td id="rad"><input type="radio" value="5" name="a8"></td>
                                     </tr>

@@ -98,6 +98,7 @@ class ResultadoAvaliacaoController extends Controller
         $mediaCursos = self::retornaMediaCursos($notasCursos);
         //dd($mediaCursos);
         $graficoCCD = self::preencheGraficoCurso($notasCursos);
+        //dd($graficoCCD);
         return view ('resultado_avaliacao',compact('avaliacao','media','mediaPor','mediaSemOutlier','mediaSemOutlierPor','mediaCursos','notasCursos'))
                     ->with('graficoCCD',json_encode($graficoCCD));
     }

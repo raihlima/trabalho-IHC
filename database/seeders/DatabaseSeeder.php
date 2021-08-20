@@ -265,22 +265,22 @@ class DatabaseSeeder extends Seeder
 	            'password' => bcrypt('1234'),
 	        ]);
             //Adicionando na tabela do professor
-            if(($index%5) !=0){
+            if(($index%5) ==0){
                 DB::table('estudante')->insert([
                     'id_usuario' => $index,
                     'curso' => 'CC-D',
                 ]);
-            } elseif(($index%5) !=1) {
+            } elseif(($index%5) ==1) {
                 DB::table('estudante')->insert([
                     'id_usuario' => $index,
                     'curso' => 'CC-N',
                 ]);
-            } elseif(($index%5) !=2) {
+            } elseif(($index%5) ==2) {
                 DB::table('estudante')->insert([
                     'id_usuario' => $index,
                     'curso' => 'EX',
                 ]);
-            } elseif(($index%5) !=3) {
+            } elseif(($index%5) ==3) {
                 DB::table('estudante')->insert([
                     'id_usuario' => $index,
                     'curso' => 'SI',

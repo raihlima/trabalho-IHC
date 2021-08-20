@@ -1,5 +1,28 @@
 @extends('layouts.app')
+<style>
+/* bootstrap hack: fix content width inside hidden tabs */
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+display: block !important;   /* undo display:none          */
+height: 0 !important;     /* height:0 is also invisible */ 
+overflow-y: hidden !important; /* no-overflow                */
+}
+.tab-content > .active,
+.pill-content > .active {
+height: auto !important;      /* let the content decide it  */
+} /* bootstrap hack end */
 
+
+    /* bootstrap hack: fix content width inside hidden tabs 
+.tab-content > .tab-pane:not(.active),
+.pill-content > .pill-pane:not(.active) {
+    display: block !important;
+    height: 0 !important;
+    overflow-y: hidden !important;
+} 
+ bootstrap hack end */
+
+</style>
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -119,7 +142,7 @@
                         </tbody>
                     </table>
                     <br>
-                    <div id="chart_div_CC-N"></div>
+                    
                 </div>
             </div>
             <br>
@@ -500,6 +523,9 @@
                                 <tbody>
                             </table>
                         </div>
+                            <div>
+                                <div id="chart_div_SI"></div>
+                            </div>
                         @endif
                         @if(!$notasCursos[3]->isEmpty())
                         <div class="tab-pane fade" id="EC" role="tabpanel" aria-labelledby="EC-tab">
@@ -614,6 +640,9 @@
                                 <tbody>
                             </table>
                         </div>
+                        <div>
+                            <div id="chart_div_EC"></div>
+                        </div>
                         @endif
                     </div>
                 </div>
@@ -622,7 +651,7 @@
     </div>
 </div>
 @endsection
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
@@ -654,9 +683,11 @@ function drawBasic() {
         height: 1200,
       };
 
-    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+      if(graficoCCD[0].length>1){
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(view, options);
+      }
 
-    chart.draw(view, options);
 
     //var data = google.visualization.arrayToDataTable(graficoCCD[1]);
     //var view = new google.visualization.DataView(data);
@@ -664,48 +695,50 @@ function drawBasic() {
    // var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
 
     //chart.draw(view, options);
+
+    
+    if(graficoCCD[1].length>1){
+        //console.log("teste1");
+        var data = google.visualization.arrayToDataTable(graficoCCD[1]);
+        var view = new google.visualization.DataView(data);
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
+
+        chart.draw(view, options);
+    }
+
+    if(graficoCCD[2].length>1){
+        console.log("teste2");
+        var data = google.visualization.arrayToDataTable(graficoCCD[2]);
+        var view = new google.visualization.DataView(data);
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_SI'));
+
+        chart.draw(view, options);
+
+    }
+
+
+    if(graficoCCD[3].length>1){
+        var data = google.visualization.arrayToDataTable(graficoCCD[3]);
+        var view = new google.visualization.DataView(data);
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_EC'));
+
+        chart.draw(view, options);
+    }
+
     }
 </script>
 
 <script type="text/javascript">
 
-var graficoCCD = <?php echo $graficoCCD; ?>;
+jQuery(document).ready(function($) {
+    $(".nav-item").click(function() {
+       // window.location = $(this).data("href");
+       drawBasic();
+       console.log("Clicou");
+    });
+});
 
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawBasic);
-
-function drawBasic() {
-    
-    var data = google.visualization.arrayToDataTable(graficoCCD[1]);
-    var view = new google.visualization.DataView(data);
-    view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" }]);
-
-    var options = {
-        title: 'Resultado da avaliação discente',
-        chartArea: {width: '20%'},
-        bar: {groupWidth: "75%"},
-        legend: { position: "none" },
-        hAxis: {
-          title: 'Média',
-          minValue: 0,
-        },
-        width: 1200,
-        height: 1200,
-      };
-
-    var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
-
-    chart.draw(view, options);
-/*
-    var data = google.visualization.arrayToDataTable(graficoCCD[1]);
-    var view = new google.visualization.DataView(data);
-
-    var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
-
-    chart.draw(view, options);*/
-    }
 </script>

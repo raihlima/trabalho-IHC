@@ -119,7 +119,7 @@
                         </tbody>
                     </table>
                     <br>
-
+                    <div id="chart_div_CC-N"></div>
                 </div>
             </div>
             <br>
@@ -266,8 +266,7 @@
                                 </table>
                             </div>
                             <div>
-
-                                <div id="chart_div" style="width: 900px; height: 300px;"></div>
+                                <div id="chart_div"></div>
                             </div>
                         </div>
                         @endif
@@ -383,6 +382,9 @@
                                         </tr>
                                 <tbody>
                             </table>
+                            <div>
+                                <div id="chart_div_CC-N"></div>
+                            </div>
                         </div>
                         @endif
                         @if(!$notasCursos[2]->isEmpty())
@@ -631,31 +633,79 @@ google.charts.setOnLoadCallback(drawBasic);
 
 function drawBasic() {
     
-    var data = google.visualization.arrayToDataTable(graficoCCD);
-    /*
-      var data = google.visualization.arrayToDataTable([
-        ['City', '2010 Population',],
-        ['New York City, NY', 8175000],
-        ['Los Angeles, CA', 3792000],
-        ['Chicago, IL', 2695000],
-        ['Houston, TX', 2099000],
-        ['Philadelphia, PA', 1526000]
-      ]);
-*/
-      var options = {
+    var data = google.visualization.arrayToDataTable(graficoCCD[0]);
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }]);
+
+    var options = {
         title: 'Resultado da avaliação discente',
-        chartArea: {width: '50%'},
+        chartArea: {width: '20%'},
+        bar: {groupWidth: "75%"},
+        legend: { position: "none" },
         hAxis: {
           title: 'Média',
-          minValue: 0
+          minValue: 0,
         },
-        vAxis: {
-          title: 'Pergunta'
-        }
+        width: 1200,
+        height: 1200,
       };
 
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
 
-      chart.draw(data, options);
+    chart.draw(view, options);
+
+    //var data = google.visualization.arrayToDataTable(graficoCCD[1]);
+    //var view = new google.visualization.DataView(data);
+
+   // var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
+
+    //chart.draw(view, options);
+    }
+</script>
+
+<script type="text/javascript">
+
+var graficoCCD = <?php echo $graficoCCD; ?>;
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+    
+    var data = google.visualization.arrayToDataTable(graficoCCD[1]);
+    var view = new google.visualization.DataView(data);
+    view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" }]);
+
+    var options = {
+        title: 'Resultado da avaliação discente',
+        chartArea: {width: '20%'},
+        bar: {groupWidth: "75%"},
+        legend: { position: "none" },
+        hAxis: {
+          title: 'Média',
+          minValue: 0,
+        },
+        width: 1200,
+        height: 1200,
+      };
+
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
+
+    chart.draw(view, options);
+/*
+    var data = google.visualization.arrayToDataTable(graficoCCD[1]);
+    var view = new google.visualization.DataView(data);
+
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
+
+    chart.draw(view, options);*/
     }
 </script>

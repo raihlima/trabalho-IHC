@@ -97,21 +97,51 @@ class ResultadoAvaliacaoController extends Controller
         $notasCursos = self::buscaNotaCurso($id);
         $mediaCursos = self::retornaMediaCursos($notasCursos);
         //dd($mediaCursos);
-        $graficoCCD = self::preencheGraficoCurso($mediaCursos);
+        $graficoCCD = self::preencheGraficoCurso($notasCursos);
         return view ('resultado_avaliacao',compact('avaliacao','media','mediaPor','mediaSemOutlier','mediaSemOutlierPor','mediaCursos','notasCursos'))
                     ->with('graficoCCD',json_encode($graficoCCD));
     }
 
 
-    private function preencheGraficoCurso ($mediaCursos){
+    private function preencheGraficoCurso ($notasCursos){
         //dd($mediaCursos);
-        $res[] = ['Pergunta', 'Média'];
+        $matriz = array();
+        $matriz[0] = self::retornaMatriz($notasCursos[0],true);
+        $matriz[1] = self::retornaMatriz($notasCursos[1],true);
+        $matriz[2] = self::retornaMatriz($notasCursos[2],true);
+        $matriz[3] = self::retornaMatriz($notasCursos[3],true);
+
+        $media[0][0] = self::retornaMedia($matriz[0]);
+        $media[0][1] = self::retornaMedia($matriz[1]);
+        $media[0][2] = self::retornaMedia($matriz[2]);
+        $media[0][3] = self::retornaMedia($matriz[3]);
+
+        //$res[] = ['Pergunta', 'Média'];
         $pergunta = Avaliacao::PERGUNTA;
-        //dd($pergunta);
-        foreach ($mediaCursos[0][0] as $key => $val) {
-            $res[++$key] = [$pergunta[$key], (double)$val];
+
+        $res = array();
+        $res [0][0] =  ['Pergunta', 'Média'];
+        $res [1][0] =  ['Pergunta', 'Média'];
+        $res [2][0] =  ['Pergunta', 'Média'];
+        $res [3][0] =  ['Pergunta', 'Média'];
+        //dd($media[0]);
+        //dd($mediaCursos);
+        
+        foreach ($media[0][0] as $key => $val) {
+            //dd($media[0][$key]);
+            $res[0][($key+1)] = [$pergunta[$key], (double)$val];
         }
-        //dd($res);
+        foreach ($media[0][1] as $key => $val) {
+            $res[1][($key+1)] = [$pergunta[$key], (double)$val];
+        }
+        foreach ($media[0][2] as $key => $val) {
+            $res[2][($key+1)] = [$pergunta[$key], (double)$val];
+        }
+        foreach ($media[0][3] as $key => $val) {
+            $res[3][($key+1)] = [$pergunta[$key], (double)$val];
+        }
+
+       // dd($res);
         return $res;
     }
 
@@ -138,10 +168,10 @@ class ResultadoAvaliacaoController extends Controller
     private function retornaMediaCursos($notasCursos){
         $media = array ();
         $matriz = array();
-        $matriz[0] = self::retornaMatriz($notasCursos[0]);
-        $matriz[1] = self::retornaMatriz($notasCursos[1]);
-        $matriz[2] = self::retornaMatriz($notasCursos[2]);
-        $matriz[3] = self::retornaMatriz($notasCursos[3]);
+        $matriz[0] = self::retornaMatriz($notasCursos[0],false);
+        $matriz[1] = self::retornaMatriz($notasCursos[1],false);
+        $matriz[2] = self::retornaMatriz($notasCursos[2],false);
+        $matriz[3] = self::retornaMatriz($notasCursos[3],false);
 
         $media[0][0] = self::retornaMedia($matriz[0]);
         $media[0][1] = self::retornaMedia($matriz[1]);
@@ -166,7 +196,7 @@ class ResultadoAvaliacaoController extends Controller
         return $media;
     }
 
-    private function retornaMatriz($curso){
+    private function retornaMatriz($curso, $grafico){
         $media = array ();
         $matriz = array();
         foreach ($curso as $cont => $ava){
@@ -183,6 +213,19 @@ class ResultadoAvaliacaoController extends Controller
             $matriz[10][$cont] = $ava->p11;
             $matriz[11][$cont] = $ava->p12;
             $matriz[12][$cont] = $ava->p13;
+
+            if($grafico){
+                $matriz[13][$cont] = $ava->a1;
+                $matriz[14][$cont] = $ava->a2;
+                $matriz[15][$cont] = $ava->a3;
+                $matriz[16][$cont] = $ava->a4;
+                $matriz[17][$cont] = $ava->a5;
+                $matriz[18][$cont] = $ava->a6;
+                $matriz[19][$cont] = $ava->a7;
+                $matriz[20][$cont] = $ava->a8;
+                $matriz[21][$cont] = $ava->a9;
+                $matriz[22][$cont] = $ava->a10;
+            }
         }
         //$media = self::retornaMedia($matriz);
         return $matriz;
@@ -197,8 +240,8 @@ class ResultadoAvaliacaoController extends Controller
                 $mediaSemOutlier[$i] = $mediaSemOutlier[$i] + $arr[$i][$key];
                 $cont= $cont +1;
             }
-            $mediaSemOutlier[$i] = $mediaSemOutlier[$i]/$cont;
-            //$mediaSemOutlier[$i] = number_format($mediaSemOutlier[$i]/$cont,2,',','');
+            //$mediaSemOutlier[$i] = $mediaSemOutlier[$i]/$cont;
+            $mediaSemOutlier[$i] = number_format($mediaSemOutlier[$i]/$cont,2,'.','');
         }
         return $mediaSemOutlier;
     }

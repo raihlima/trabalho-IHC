@@ -44,6 +44,10 @@ class Avaliacao extends Model
     ];
 
     const PERGUNTA = [
+
+
+
+
         'O professor disponibilizou o plano de curso da disciplina na primeira semana de aula?',
         'O professor é pontual?',
         'O professor é assíduo às aulas?',
@@ -66,7 +70,7 @@ class Avaliacao extends Model
         'Você considera que possuía a base teórica necessária para cursar esta disciplina?',
         'Você faz as atividades práticas propostas pelo professor?',
         'Você considera que se dedicou suficientemente à disciplina?',
-        'Na sua opnião, suas notas refletem de modo fiel o conhecimento que você adquiriu ao longo da disciplina?',
+        'Na sua opnião, suas notas refletem de modo fiel o conhecimento que você adquiriu ao longo da disciplina?'
     ];
 
     protected $table = 'avaliacao';

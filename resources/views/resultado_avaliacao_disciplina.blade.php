@@ -8,8 +8,8 @@
                 <div class="card-header">{{ __('Disciplina') }}</div>
 
                 <div class="card-body">
-                Código:
-                Nome:
+                     Código: {{$disciplina[0]->codigo}}
+                <br> Nome: {{$disciplina[0]->nome}}
                 </div>
             </div>
             <br>

@@ -34,4 +34,5 @@ Route::get('estudante',[App\Http\Controllers\EstudanteController::class,'index' 
 Route::get('estudante/avaliacao/{id}', [App\Http\Controllers\EstudanteController::class, 'create'])->name('estudante.avaliacao')->middleware('auth');;
 Route::post('estudante/realizar_avaliacao', [App\Http\Controllers\EstudanteController::class, 'store'])->name('estudante.realizar_avaliacao')->middleware('auth');;
 
-Route::get('resultado_avaliacao/{id}',[App\Http\Controllers\ResultadoAvaliacaoController::class,'relatorioAvaliacao' ])->name('resultado_avaliacao')->middleware('auth');;
+Route::get('resultado_avaliacao/{id}',[App\Http\Controllers\ResultadoAvaliacaoController::class,'relatorioAvaliacao' ])->name('resultado_avaliacao')->middleware('auth');
+Route::get('resultado_avaliacao_disciplina/{id}',[App\Http\Controllers\ResultadoAvaliacaoController::class,'relatorioAvaliacaoDisciplina' ])->name('resultado_avaliacao_disciplina')->middleware('auth');

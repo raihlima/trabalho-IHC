@@ -25,7 +25,7 @@
                                 <tbody id="listaDisciplina">
                                     @foreach($lista as $list)
                                     
-                                    <tr class='clickable-row' data-href='{{route ("chefe_departamento.lista_professores")}}'>
+                                    <tr class='clickable-row' data-href='{{route ("resultado_avaliacao_disciplina", $list->id )}}'>
                                         <td>{{$list->codigo}}</td>
                                         <td>{{$list->nome}}</td>
                                     </tr>

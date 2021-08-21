@@ -59,9 +59,10 @@ class ResultadoAvaliacaoController extends Controller
             }
 
 
-            //dd($disciplina);
+            //
 
             $resultado = self::converterAvaliacaoDisciplinaGrafico($resultado);
+            //dd($resultado[0]);
             return view ('resultado_avaliacao_disciplina',compact('resultado','disciplina'));
         } 
         return abort (404);
@@ -108,9 +109,9 @@ class ResultadoAvaliacaoController extends Controller
         foreach($media as $i=>$med){
             foreach($med as $j=>$m){
                 $resultado[$i][$j+1][0] = $pergunta[$j];
-                $resultado[$i][$j+1][1] = $m;
+                $resultado[$i][$j+1][1] = (float)$m;
                 foreach($dados as $key=>$d){
-                    $resultado[$i][$j+1][$key+2] = $dados[$key][$i][$j];
+                    $resultado[$i][$j+1][$key+2] = (float)$dados[$key][$i][$j];
                 }
             }
         }

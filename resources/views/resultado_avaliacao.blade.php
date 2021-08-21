@@ -688,84 +688,6 @@ height: auto !important;
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
-/*
-//var grafico = //
-//var graficoCCD = grafico.graficoCurso;
-
-console.log(grafico);
-
-google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawBasic);
-
-function drawBasic() {
-    
-    var data = google.visualization.arrayToDataTable(graficoCCD[0]);
-    var view = new google.visualization.DataView(data);
-    view.setColumns([0, 1,
-                       { calc: "stringify",
-                         sourceColumn: 1,
-                         type: "string",
-                         role: "annotation" }]);
-
-    var options = {
-        title: 'Resultado da avaliação discente',
-        chartArea: {width: '20%'},
-        bar: {groupWidth: "75%"},
-        legend: { position: "none" },
-        hAxis: {
-          title: 'Média',
-          minValue: 0,
-        },
-        width: 1200,
-        height: 1200,
-      };
-
-      if(graficoCCD[0].length>1){
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-        chart.draw(view, options);
-      }
-
-
-    //var data = google.visualization.arrayToDataTable(graficoCCD[1]);
-    //var view = new google.visualization.DataView(data);
-
-   // var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
-
-    //chart.draw(view, options);
-
-    
-    if(graficoCCD[1].length>1){
-        //console.log("teste1");
-        var data1 = google.visualization.arrayToDataTable(graficoCCD[1]);
-        var view1 = new google.visualization.DataView(data1);
-
-        var chart1 = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
-
-        chart1.draw(view1, options);
-    }
-
-    if(graficoCCD[2].length>1){
-        console.log("teste2");
-        var data2 = google.visualization.arrayToDataTable(graficoCCD[2]);
-        var view2 = new google.visualization.DataView(data2);
-
-        var chart2 = new google.visualization.BarChart(document.getElementById('chart_div_SI'));
-
-        chart2.draw(view2, options);
-
-    }
-
-
-    if(graficoCCD[3].length>1){
-        var data3 = google.visualization.arrayToDataTable(graficoCCD[3]);
-        var view3 = new google.visualization.DataView(data3);
-
-        var chart3 = new google.visualization.BarChart(document.getElementById('chart_div_EC'));
-
-        chart3.draw(view3, options);
-    }
-
-}*/
 </script>
 
 <script>
@@ -778,7 +700,7 @@ function drawBasic() {
     
     echo json_encode($data[0]); ?>;
 
-    console.log(graficoCurso);
+    //console.log(graficoCurso);
 
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawStuff);
@@ -864,6 +786,7 @@ function drawBasic() {
     
     function drawCCD(){
         var data = google.visualization.arrayToDataTable(graficoCurso[0]);
+        //console.log(data);
         var view = new google.visualization.DataView(data);
         view.setColumns([0, 1,
                         { calc: "stringify",
@@ -1030,40 +953,27 @@ jQuery(document).ready(function($) {
         $("#chart_div_CC-N").hide();
         $("#chart_div_SI").hide();
         $("#chart_div_EC").hide();
-   // $(".nav-item").click(function() {
-       // window.location = $(this).data("href");
-       //drawBasic(); $("#elementId").hide();
-       console.log("Clicou CCD");
+
     });
     $("#CC-N-tab").click(function() {
         $("#chart_div").hide();
         $("#chart_div_CC-N").show();
         $("#chart_div_SI").hide();
         $("#chart_div_EC").hide();
-   // $(".nav-item").click(function() {
-       // window.location = $(this).data("href");
-       //drawBasic(); $("#elementId").hide();
-       console.log("Clicou CCN");
+
     });
     $("#SI-tab").click(function() {
         $("#chart_div").hide();
         $("#chart_div_CC-N").hide();
         $("#chart_div_SI").show();
         $("#chart_div_EC").hide();
-   // $(".nav-item").click(function() {
-       // window.location = $(this).data("href");
-       //drawBasic(); $("#elementId").hide();
-       console.log("Clicou SI");
+
     });
     $("#EC-tab").click(function() {
         $("#chart_div").hide();
         $("#chart_div_CC-N").hide();
         $("#chart_div_SI").hide();
         $("#chart_div_EC").show();
-   // $(".nav-item").click(function() {
-       // window.location = $(this).data("href");
-       //drawBasic(); $("#elementId").hide();
-       console.log("Clicou EC");
     });
 });
 

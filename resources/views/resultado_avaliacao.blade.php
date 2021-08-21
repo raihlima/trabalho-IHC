@@ -1,15 +1,15 @@
 @extends('layouts.app')
 <style>
-/* bootstrap hack: fix content width inside hidden tabs */
+/* bootstrap hack: fix content width inside hidden tabs 
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
-display: block !important;   /* undo display:none          */
-height: 0 !important;     /* height:0 is also invisible */ 
-overflow-y: hidden !important; /* no-overflow                */
+display: block !important;   /* undo display:none          
+height: 0 !important;     /* height:0 is also invisible 
+overflow-y: hidden !important; /* no-overflow                
 }
 .tab-content > .active,
 .pill-content > .active {
-height: auto !important;      /* let the content decide it  */
+height: auto !important;      /* let the content decide it  
 } /* bootstrap hack end */
 
 
@@ -142,7 +142,9 @@ height: auto !important;      /* let the content decide it  */
                         </tbody>
                     </table>
                     <br>
-                    
+                    <div>
+                        <div id="scatterchart_material"></div>
+                    </div>
                 </div>
             </div>
             <br>
@@ -640,6 +642,7 @@ height: auto !important;      /* let the content decide it  */
                                 <tbody>
                             </table>
                         </div>
+                        <br>
                         <div>
                             <div id="chart_div_EC"></div>
                         </div>
@@ -655,7 +658,11 @@ height: auto !important;      /* let the content decide it  */
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
-var graficoCCD = <?php echo $graficoCCD; ?>;
+/*
+//var grafico = //
+//var graficoCCD = grafico.graficoCurso;
+
+console.log(grafico);
 
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawBasic);
@@ -699,36 +706,94 @@ function drawBasic() {
     
     if(graficoCCD[1].length>1){
         //console.log("teste1");
-        var data = google.visualization.arrayToDataTable(graficoCCD[1]);
-        var view = new google.visualization.DataView(data);
+        var data1 = google.visualization.arrayToDataTable(graficoCCD[1]);
+        var view1 = new google.visualization.DataView(data1);
 
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
+        var chart1 = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
 
-        chart.draw(view, options);
+        chart1.draw(view1, options);
     }
 
     if(graficoCCD[2].length>1){
         console.log("teste2");
-        var data = google.visualization.arrayToDataTable(graficoCCD[2]);
-        var view = new google.visualization.DataView(data);
+        var data2 = google.visualization.arrayToDataTable(graficoCCD[2]);
+        var view2 = new google.visualization.DataView(data2);
 
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div_SI'));
+        var chart2 = new google.visualization.BarChart(document.getElementById('chart_div_SI'));
 
-        chart.draw(view, options);
+        chart2.draw(view2, options);
 
     }
 
 
     if(graficoCCD[3].length>1){
-        var data = google.visualization.arrayToDataTable(graficoCCD[3]);
-        var view = new google.visualization.DataView(data);
+        var data3 = google.visualization.arrayToDataTable(graficoCCD[3]);
+        var view3 = new google.visualization.DataView(data3);
 
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div_EC'));
+        var chart3 = new google.visualization.BarChart(document.getElementById('chart_div_EC'));
 
-        chart.draw(view, options);
+        chart3.draw(view3, options);
     }
 
-    }
+}*/
+</script>
+
+<script>
+    var graficoDispersao = <?php 
+    
+    echo $graficoDispersao; ?>;
+
+    //console.log(graficoDispersao);
+    google.charts.load('current', {'packages':['scatter']});
+    google.charts.setOnLoadCallback(drawChartScatter);
+
+    function drawChartScatter () {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Pergunta');
+        let x = graficoDispersao[0];
+        //console.log(graficoDispersao[0].length);
+        //console.log(x.length);
+        for(let i=1;i<graficoDispersao[0].length;i++){
+            data.addColumn('number', 'D'+i);
+
+        }
+       // console.log(data);
+        data.addRows(graficoDispersao);
+
+        /*
+        data.addColumn('number', 'A');
+		data.addColumn('number', 'B');
+        data.addRows([
+          [0, 6,7], [1, 8,8], [2, 7,7],
+          [3, 9,3], [4, 8,5], [5, 9,1],
+
+        ]);
+*/
+        var options = {
+          width: 800,
+          height: 500,
+          chart: {
+            title: ' Gráfico de dispersão',
+            subtitle: 'das notas atribuídas por discente para cada critério avaliativo'
+          },
+          
+          //hAxis: {title: 'Notas'},
+          /*
+          hAxis: {title: 'Pergunta', 
+            direction:-1,
+            slantedText:true, 
+            slantedTextAngle:180},
+*/
+        vAxis: {title: 'Notas'},
+            legend: {position: 'top'}
+        };
+
+        var chart = new google.charts.Scatter(document.getElementById('scatterchart_material'));
+
+        chart.draw(data, google.charts.Scatter.convertOptions(options));
+      }
+      
 </script>
 
 <script type="text/javascript">
@@ -736,7 +801,7 @@ function drawBasic() {
 jQuery(document).ready(function($) {
     $(".nav-item").click(function() {
        // window.location = $(this).data("href");
-       drawBasic();
+       //drawBasic();
        console.log("Clicou");
     });
 });

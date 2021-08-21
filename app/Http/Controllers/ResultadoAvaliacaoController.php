@@ -98,11 +98,29 @@ class ResultadoAvaliacaoController extends Controller
         $mediaCursos = self::retornaMediaCursos($notasCursos);
         //dd($mediaCursos);
         $graficoCCD = self::preencheGraficoCurso($notasCursos);
-        //dd($graficoCCD);
-        return view ('resultado_avaliacao',compact('avaliacao','media','mediaPor','mediaSemOutlier','mediaSemOutlierPor','mediaCursos','notasCursos'))
-                    ->with('graficoCCD',json_encode($graficoCCD));
+        $graficoDispersao = self::preencheGraficoDispersao($matriz);
+        //dd($notasCursos[3]);
+        $data = array();
+        $data[0] = $graficoCCD;
+        $data[1] = $graficoDispersao;
+        //dd($data['graficoDispersao']);
+        return view ('resultado_avaliacao',compact('avaliacao','media','mediaPor','mediaSemOutlier','mediaSemOutlierPor','mediaCursos','notasCursos','data'))
+                    ->with('graficoDispersao',json_encode($graficoDispersao));
     }
 
+    private function preencheGraficoDispersao ($matriz){
+        //dd($matriz);
+        $resultado = array();
+        $pergunta = Avaliacao::PERGUNTA;
+        foreach ($matriz as $key=> $mat){
+            $resultado[$key][0] = $pergunta[$key];
+            foreach ($matriz[$key] as $j=> $vet){
+                $resultado[$key][$j+1] = $vet;
+            }
+        }
+        //dd($resultado);
+        return $resultado;
+    }
 
     private function preencheGraficoCurso ($notasCursos){
         //dd($mediaCursos);

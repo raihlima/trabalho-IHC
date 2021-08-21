@@ -264,7 +264,7 @@ class DatabaseSeeder extends Seeder
 	            'matricula' => (201565000+$index),
 	            'password' => bcrypt('1234'),
 	        ]);
-            //Adicionando na tabela do professor
+            //Adicionando na tabela do estudante
             if(($index%5) ==0){
                 DB::table('estudante')->insert([
                     'id_usuario' => $index,
@@ -278,13 +278,27 @@ class DatabaseSeeder extends Seeder
             } elseif(($index%5) ==2) {
                 DB::table('estudante')->insert([
                     'id_usuario' => $index,
-                    'curso' => 'EX',
-                ]);
-            } elseif(($index%5) ==3) {
-                DB::table('estudante')->insert([
-                    'id_usuario' => $index,
                     'curso' => 'SI',
                 ]);
+            } elseif(($index%5) ==3) {
+                $x = rand(1,3);
+                if($x == 1){
+                    DB::table('estudante')->insert([
+                        'id_usuario' => $index,
+                        'curso' => 'CC-D',
+                    ]);
+                } elseif ($x==2){
+                    DB::table('estudante')->insert([
+                        'id_usuario' => $index,
+                        'curso' => 'CC-N',
+                    ]);
+                } else {
+                    DB::table('estudante')->insert([
+                        'id_usuario' => $index,
+                        'curso' => 'SI',
+                    ]);
+                }
+
             } else{
                 DB::table('estudante')->insert([
                     'id_usuario' => $index,
@@ -314,7 +328,7 @@ class DatabaseSeeder extends Seeder
         }
 
         //Adicionando avaliação dos alunos
-        foreach (range(1,1000) as $index) {
+        foreach (range(1,800) as $index) {
             DB::table('avaliacao')->insert([
 	            'id_turma_estudante' => $index,
                 'p1' => rand(3,5),
@@ -345,7 +359,7 @@ class DatabaseSeeder extends Seeder
 	        ]);
         }
         //Diminuindo
-        foreach (range(1001,1100) as $index) {
+        foreach (range(801,1100) as $index) {
             DB::table('avaliacao')->insert([
 	            'id_turma_estudante' => $index,
                 'p1' => rand(1,5),

@@ -1,26 +1,26 @@
 @extends('layouts.app')
 <style>
-/* bootstrap hack: fix content width inside hidden tabs 
+
 .tab-content > .tab-pane,
 .pill-content > .pill-pane {
-display: block !important;   /* undo display:none          
-height: 0 !important;     /* height:0 is also invisible 
-overflow-y: hidden !important; /* no-overflow                
+display: block !important;          
+height: 0 !important;     
+overflow-y: hidden !important;              
 }
 .tab-content > .active,
 .pill-content > .active {
-height: auto !important;      /* let the content decide it  
-} /* bootstrap hack end */
+height: auto !important; 
+} 
 
-
-    /* bootstrap hack: fix content width inside hidden tabs 
+/*
+    // bootstrap hack: fix content width inside hidden tabs 
 .tab-content > .tab-pane:not(.active),
 .pill-content > .pill-pane:not(.active) {
     display: block !important;
     height: 0 !important;
     overflow-y: hidden !important;
 } 
- bootstrap hack end */
+*/
 
 </style>
 @section('content')
@@ -774,10 +774,20 @@ function drawBasic() {
     
     echo $graficoDispersao; ?>;
 
-    google.charts.load('current', {'packages':['corechart', 'scatter']});
-    google.charts.setOnLoadCallback(drawStuff);
+    var graficoCurso = <?php 
+    
+    echo json_encode($data[0]); ?>;
 
-      function drawStuff() {
+    console.log(graficoCurso);
+
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawStuff);
+    google.charts.setOnLoadCallback(drawCCD);
+    google.charts.setOnLoadCallback(drawCCN);
+    google.charts.setOnLoadCallback(drawSI);
+    google.charts.setOnLoadCallback(drawEC);
+    
+    function drawStuff() {
 
         var chartDiv = document.getElementById('scatterchart');
 
@@ -851,16 +861,208 @@ function drawBasic() {
 
         drawClassicChart();
     }
-      
+    
+    
+    function drawCCD(){
+        var data = google.visualization.arrayToDataTable(graficoCurso[0]);
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                        { calc: "stringify",
+                            sourceColumn: 1,
+                            type: "string",
+                            role: "annotation" }]);
+
+        var options = {
+            title: 'Resultado da avaliação discente',
+            chartArea: {width: '20%',          
+                height:800,
+                top:100
+            },
+            bar: {groupWidth: "75%"},
+            legend: { position: "none" },
+            hAxis: {
+                title: 'Média',
+                maxValue: 5,
+            },
+            vAxis: {
+                textStyle: {
+                    fontSize: 14
+                    }
+            },
+            width: 1200,
+            height: 1200,
+
+        };
+
+        if(graficoCurso[0].length>1){
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(view, options);
+            //document.getElementById( 'chart_div_CC-N' ).style.display = 'none';
+            //document.getElementById( 'chart_div_SI' ).style.display = 'none';
+            //document.getElementById( 'chart_div_EC' ).style.display = 'none';
+        }
+    }
+
+    function drawCCN(){
+        
+        var data = google.visualization.arrayToDataTable(graficoCurso[1]);
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                        { calc: "stringify",
+                            sourceColumn: 1,
+                            type: "string",
+                            role: "annotation" }]);
+
+        var options = {
+            title: 'Resultado da avaliação discente',
+            chartArea: {width: '20%',          
+                height:800,
+                top:100
+            },
+            bar: {groupWidth: "75%"},
+            legend: { position: "none" },
+            hAxis: {
+                title: 'Média',
+                maxValue: 5,
+            },
+            vAxis: {
+                textStyle: {
+                    fontSize: 14
+                    }
+            },
+            width: 1200,
+            height: 1200,
+
+        };
+
+        if(graficoCurso[1].length>1){
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_CC-N'));
+
+            chart.draw(view, options);
+        }
+    }
+
+    function drawSI(){
+        
+        var data = google.visualization.arrayToDataTable(graficoCurso[2]);
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                        { calc: "stringify",
+                            sourceColumn: 1,
+                            type: "string",
+                            role: "annotation" }]);
+
+        var options = {
+            title: 'Resultado da avaliação discente',
+            chartArea: {width: '20%',          
+                height:800,
+                top:100
+            },
+            bar: {groupWidth: "75%"},
+            legend: { position: "none" },
+            hAxis: {
+                title: 'Média',
+                maxValue: 5,
+            },
+            vAxis: {
+                textStyle: {
+                    fontSize: 14
+                    }
+            },
+            width: 1200,
+            height: 1200,
+
+        };
+
+        if(graficoCurso[2].length>1){
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_SI'));
+
+            chart.draw(view, options);
+        }
+    }
+
+    function drawEC(){
+        
+        var data = google.visualization.arrayToDataTable(graficoCurso[3]);
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                        { calc: "stringify",
+                            sourceColumn: 1,
+                            type: "string",
+                            role: "annotation" }]);
+
+        var options = {
+            title: 'Resultado da avaliação discente',
+            chartArea: {width: '20%',          
+                height:800,
+                top:100
+            },
+            bar: {groupWidth: "75%"},
+            legend: { position: "none" },
+            hAxis: {
+                title: 'Média',
+                maxValue: 5,
+            },
+            vAxis: {
+                textStyle: {
+                    fontSize: 14
+                    }
+            },
+            width: 1200,
+            height: 1200,
+
+        };
+
+        if(graficoCurso[1].length>1){
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div_EC'));
+
+            chart.draw(view, options);
+        }
+    }
 </script>
 
 <script type="text/javascript">
 
 jQuery(document).ready(function($) {
-    $(".nav-item").click(function() {
+    $("#CC-D-tab").click(function() {
+        $("#chart_div").show();
+        $("#chart_div_CC-N").hide();
+        $("#chart_div_SI").hide();
+        $("#chart_div_EC").hide();
+   // $(".nav-item").click(function() {
        // window.location = $(this).data("href");
-       //drawBasic();
-       console.log("Clicou");
+       //drawBasic(); $("#elementId").hide();
+       console.log("Clicou CCD");
+    });
+    $("#CC-N-tab").click(function() {
+        $("#chart_div").hide();
+        $("#chart_div_CC-N").show();
+        $("#chart_div_SI").hide();
+        $("#chart_div_EC").hide();
+   // $(".nav-item").click(function() {
+       // window.location = $(this).data("href");
+       //drawBasic(); $("#elementId").hide();
+       console.log("Clicou CCN");
+    });
+    $("#SI-tab").click(function() {
+        $("#chart_div").hide();
+        $("#chart_div_CC-N").hide();
+        $("#chart_div_SI").show();
+        $("#chart_div_EC").hide();
+   // $(".nav-item").click(function() {
+       // window.location = $(this).data("href");
+       //drawBasic(); $("#elementId").hide();
+       console.log("Clicou SI");
+    });
+    $("#EC-tab").click(function() {
+        $("#chart_div").hide();
+        $("#chart_div_CC-N").hide();
+        $("#chart_div_SI").hide();
+        $("#chart_div_EC").show();
+   // $(".nav-item").click(function() {
+       // window.location = $(this).data("href");
+       //drawBasic(); $("#elementId").hide();
+       console.log("Clicou EC");
     });
 });
 

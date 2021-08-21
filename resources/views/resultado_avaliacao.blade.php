@@ -862,7 +862,6 @@ function drawBasic() {
         drawClassicChart();
     }
     
-    
     function drawCCD(){
         var data = google.visualization.arrayToDataTable(graficoCurso[0]);
         var view = new google.visualization.DataView(data);
@@ -1019,6 +1018,8 @@ function drawBasic() {
             chart.draw(view, options);
         }
     }
+
+
 </script>
 
 <script type="text/javascript">

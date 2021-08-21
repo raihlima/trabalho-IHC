@@ -33,7 +33,7 @@
                         </div>
                         </div>
                     </div>
-                    <div class="card">
+                    <div class="card" style="display: none;">
                         <div class="card-header" id="headingTwo">
                         <h2 class="mb-0">
                             <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">

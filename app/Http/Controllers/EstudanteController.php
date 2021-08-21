@@ -79,16 +79,35 @@ class EstudanteController extends Controller
     public function create($id)
     {
         //dd($id);
-        $turma = DB::table('turma_estudante as te')
-                ->join('turma as t','t.id','=','te.id_turma')
-                ->join('disciplina as d','t.id_disciplina', '=' ,'d.id')
-                ->join('users as u','t.id_professor', '=' ,'u.id')
-                ->where('te.id','=',$id)
-                ->select('te.id as te_id','u.name as nome_professor','d.codigo as codigo_disciplina','d.nome as nome_disciplina','t.codigo as codigo_turma')
-                ->get();
-        //dd($turma);
-        //$turma = Campeonato::where('id', '=', $id)->first();
-        return view('avaliacao', compact('turma'));
+        $usuario = Auth::user();
+        $estudante = DB::table('estudante')->where('id_usuario', '=', $usuario->id)->get();
+
+        if(!$estudante->isEmpty()){
+            $teste = DB::table('turma_estudante as te') //Para saber se é o mesmo aluno a responder a avaliação
+            ->where('te.id_estudante','=',$usuario->id)->get();
+            if(!$teste->isEmpty()){
+                $teste2 = DB::table('avaliacao as a') //Para saber se a avaliação já foi respondida
+                        ->where('a.id_turma_estudante','=',$id)
+                        ->get();
+                if($teste2->isEmpty()){
+                    $turma = DB::table('turma_estudante as te')
+                    ->join('turma as t','t.id','=','te.id_turma')
+                    ->join('disciplina as d','t.id_disciplina', '=' ,'d.id')
+                    ->join('users as u','t.id_professor', '=' ,'u.id')
+                    ->where('te.id','=',$id)
+                    ->select('te.id as te_id','u.name as nome_professor','d.codigo as codigo_disciplina','d.nome as nome_disciplina','t.codigo as codigo_turma')
+                    ->get();
+                    //dd($turma);
+                    //$turma = Campeonato::where('id', '=', $id)->first();
+        
+                    return view('avaliacao', compact('turma'));
+                }
+
+            }
+        } 
+            return abort(404,'Não encontrado');
+        
+
     }
     /**
      * Store a newly created resource in storage.
@@ -99,6 +118,7 @@ class EstudanteController extends Controller
     public function store(Request $request)
     {
         //
+        
         $camp = Avaliacao::create($request->all());
         return redirect()->route('estudante');
     }

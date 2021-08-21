@@ -61,9 +61,61 @@ class ResultadoAvaliacaoController extends Controller
 
             //dd($disciplina);
 
+            $resultado = self::converterAvaliacaoDisciplinaGrafico($resultado);
             return view ('resultado_avaliacao_disciplina',compact('resultado','disciplina'));
         } 
         return abort (404);
+    }
+
+    private function converterAvaliacaoDisciplinaGrafico($dados){
+        $resultado = array();
+        $pergunta = Avaliacao::PERGUNTA;
+        $media = array();
+        $testeNull = true;
+        $cont = 0;
+        foreach($dados as $i=> $d){
+            foreach($dados[$i] as $j=> $dj){
+                foreach($dados[$i][$j] as $k=> $dk){
+                    //dd($media);
+                    if($testeNull){
+                        $media[$j][$k] = 0;
+                    } 
+                    $media[$j][$k] = $media[$j][$k]+$dk;
+                }
+                
+            }
+            $testeNull = false;
+            $cont= $cont+1;
+        }
+        //$media[0] = (float)($media[0])/$cont;
+        foreach($media as $i=>$med){
+            foreach($med as $j=>$m){
+                $media[$i][$j] = number_format(((float)($m)/$cont),2,'.','');
+                //dd($m);
+            }
+        }
+
+        for($i =0;$i<4;$i++){
+            $resultado[$i][0] = ['Pergunta','Média'];
+            foreach($dados as $key=>$d){
+                $resultado[$i][0][$key+2]='Turma ';
+                $resultado[$i][0][$key+2].=chr(65+$key);
+            }
+        }
+
+        //dd($resultado);
+
+        foreach($media as $i=>$med){
+            foreach($med as $j=>$m){
+                $resultado[$i][$j+1][0] = $pergunta[$j];
+                $resultado[$i][$j+1][1] = $m;
+                foreach($dados as $key=>$d){
+                    $resultado[$i][$j+1][$key+2] = $dados[$key][$i][$j];
+                }
+            }
+        }
+        //dd($resultado);
+        return $resultado;
     }
 
     public function relatorioAvaliacao($id){
@@ -291,7 +343,7 @@ class ResultadoAvaliacaoController extends Controller
                 $mediaSemOutlier[$i] = $mediaSemOutlier[$i] + $arr[$i][$key];
                 $cont= $cont +1;
             }
-            $mediaSemOutlier[$i] = number_format((float)(($mediaSemOutlier[$i]*100)/($cont*5)),1,',','');
+            $mediaSemOutlier[$i] = number_format((float)(($mediaSemOutlier[$i]*100)/($cont*5)),1,'.','');
         }
         return $mediaSemOutlier;
     }

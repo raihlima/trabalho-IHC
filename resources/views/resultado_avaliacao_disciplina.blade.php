@@ -15,7 +15,13 @@
             <br>
             <div class="card">
                 <div class="card-header">{{ __('Gráfico de Médias com Outlier') }}</div>
+                <div class="card-body">
 
+                </div>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-header">{{ __('Gráfico de Médias de Porcentagem com Outlier') }}</div>
                 <div class="card-body">
 
                 </div>
@@ -23,13 +29,22 @@
             <br>
             <div class="card">
                 <div class="card-header">{{ __('Gráfico de Médias sem Outlier') }}</div>
-
                 <div class="card-body">
 
                 </div>
             </div>
-    
+            <br>
+            <div class="card">
+                <div class="card-header">{{ __('Gráfico de Médias de Porcentagem sem Outlier') }}</div>
+                <div class="card-body">
+
+                </div>
+            </div>
         </div>
     </div>
 </div>
 @endsection
+
+<script>
+
+</script>

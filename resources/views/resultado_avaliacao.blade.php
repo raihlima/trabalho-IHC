@@ -550,10 +550,11 @@ height: auto !important;
                                             </tr>
                                     <tbody>
                                 </table>
-                            </div>
                                 <div>
                                     <div id="chart_div_SI"></div>
                                 </div>
+                            </div>
+
                         @endif
                         @if(!$notasCursos[3]->isEmpty())
                             @if($notasCursos[0]->isEmpty() && $notasCursos[1]->isEmpty() && $notasCursos[1]->isEmpty())
@@ -671,11 +672,12 @@ height: auto !important;
                                             </tr>
                                     <tbody>
                                 </table>
+                                <div>
+                                    <div id="chart_div_EC"></div>
+                                </div>
                             </div>
                         <br>
-                        <div>
-                            <div id="chart_div_EC"></div>
-                        </div>
+
                         @endif
                     </div>
                 </div>
@@ -692,8 +694,7 @@ height: auto !important;
 
 <script>
     
-    var graficoDispersao = <?php 
-    
+    var graficoDispersao = <?php  
     echo $graficoDispersao; ?>;
 
     var graficoCurso = <?php 

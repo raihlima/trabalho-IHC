@@ -12,6 +12,8 @@ class Turma extends Model
     protected $fillable = [
         'data_inicio',
         'codigo',
+        'id_disciplina',
+        'id_professor'
     ];
 
     protected $dates = [

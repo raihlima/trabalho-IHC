@@ -84,8 +84,14 @@ class HomeController extends Controller
         }
         else if(!$professor->isEmpty()){
             $chefe = DB::table('chefe_departamento')->where('id_usuario', '=', $usuario->id)->get();
+            $coordenador = DB::table('coordenador_curso')->where('id_usuario', '=', $usuario->id)->get();
             if(!$chefe->isEmpty()){
                 return view('chefe');
+            } else if(!$coordenador->isEmpty()){
+               // dd($coordenador);
+
+               return view('coordenador');
+
             } else {
             $materia = DB::table('turma')
                        ->join('disciplina','turma.id_disciplina','=','disciplina.id')

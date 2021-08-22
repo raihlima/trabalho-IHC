@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
             'curso' => 'SI',
         ]);
         DB::table('coordenador_curso')->insert([
-            'id_usuario' => 4,
+            'id_usuario' => 5,
             'curso' => 'EC',
         ]);
         

@@ -37,12 +37,14 @@ class ProfessorController extends Controller
 
     public function showDisciplinas($id){
         $usuario = Auth::user();
-        $professor = DB::table('professor')->where('id_usuario', '=', $usuario->id)->where('estagio_probatorio','=',1)->get();
+        $professor = DB::table('professor')->where('id_usuario', '=', $id)->where('estagio_probatorio','=','1')->get();
         $estudante = DB::table('estudante')->where('id_usuario', '=', $usuario->id)->get();
         $progepe = DB::table('progepe')->where('id_usuario', '=', $usuario->id)->get();
         $chefe = DB::table('chefe_departamento')->where('id_usuario', '=', $usuario->id)->get();
+        $coordenador = DB::table('coordenador_curso')->where('id_usuario', '=', $usuario->id)->get();
 
-        if(!$chefe->isEmpty() || (!$progepe->isEmpty() && !$professor->isEmpty())){
+        //dd($professor);
+        if(!$chefe->isEmpty() || (!$progepe->isEmpty() && !$professor->isEmpty()) || !$coordenador->isEmpty()){
             $materia = DB::table('turma')
             ->join('disciplina','turma.id_disciplina','=','disciplina.id')
             ->select('disciplina.nome','disciplina.codigo','turma.codigo as turma_codigo','turma.id')

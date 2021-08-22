@@ -51,11 +51,17 @@ class CoordenadorCursoController extends Controller
                             ->get()
                             ->toArray();
 
-            dd($listaTurma);
+            //dd($listaTurma);
             $lista = DB::table('professor as p')
                     ->join('users as u','u.id','=','p.id_usuario')
+                    //->join('disciplina as d','d.id_professor','=','p.id_usuario')
+                    ->join('turma as t','t.id_disciplina','=','p.id_usuario')
+                    ->join('turma_estudante as te','te.id_turma','=','t.id')
+                    ->join('estudante as e','e.id_usuario','=','te.id_estudante')
+                    ->where('e.curso','=',$coordenador->curso)
                     ->orderBy('u.name','asc')
                     ->select('u.id','u.name','p.estagio_probatorio')
+                    ->distinct()
                     ->get();
             //dd($lista);
             return view('lista_professores',compact('lista'));

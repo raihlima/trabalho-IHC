@@ -22,7 +22,7 @@ sudo apt install npm
 
 Instalação do banco:
 ```
-sudo apt install mysql
+sudo apt install mysql-server
 ```
 
 ## Repostório

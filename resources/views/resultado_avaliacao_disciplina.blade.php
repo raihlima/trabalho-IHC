@@ -12,10 +12,12 @@
         <div class="col-md-4">
             <div id="menu" style="position: fixed">
                 <div id="list-example" class="list-group">
-                    <a class="list-group-item list-group-item-action" href="#list-item-1">Gráfico de Médias com Outlier</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-2">Gráfico de Médias de Porcentagem com Outlier</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-3">Gráfico de Médias sem Outlier</a>
-                    <a class="list-group-item list-group-item-action" href="#list-item-4">Gráfico de Médias de Porcentagem sem Outlier</a>
+                    Acesso Rápido
+                    <a class="list-group-item list-group-item-action" href="#list-item-1">Disciplina</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-2">Gráfico de Médias com Outlier</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-3">Gráfico de Médias de Porcentagem com Outlier</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-4">Gráfico de Médias sem Outlier</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-5">Gráfico de Médias de Porcentagem sem Outlier</a>
                 </div>
             </div>
         </div>
@@ -51,7 +53,7 @@
                 </div>
             </div>
             <br>
-            <div class="card">
+            <div class="card" id="list-item-5">
                 <div class="card-header">{{ __('Gráfico de Médias de Porcentagem sem Outlier') }}</div>
                 <div class="card-body">
                     <div id="chart_div4"></div>

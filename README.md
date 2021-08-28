@@ -22,7 +22,7 @@ sudo apt install npm
 
 Instalação do banco:
 ```
-sudo apt install mysql
+sudo apt install mysql-server
 ```
 
 ## Repostório
@@ -83,7 +83,7 @@ flush privileges;
 
 Criar uma nova base de dados para o projeto:
 <pre>
-create database <b>DATABASE</b>;
+create database <b>LARAVEL</b>;
 </pre>
 
 Se tudo correu bem, sair do MySQL:
@@ -117,4 +117,40 @@ php artisan serve
 Então basta abrir o site pelo navegador:
 ```
 http://127.0.0.1:8000
+```
+
+### Dados de login
+
+**OBS:** Formato das tuplas de dados abaixo
+```
+username:password
+```
+
+-> Estudante
+```
+201565041:1234
+[...]
+201565440:1234
+```
+-> Professor
+```
+100006:1234
+[...]
+100040:1234
+```
+-> Coordenador
+```
+100002:1234
+[...]
+100005:1234
+```
+-> Chefe de departamento
+```
+100001:1234
+```
+-> Membro PROGEPE
+```
+1001:1234
+[...]
+1010:1234
 ```

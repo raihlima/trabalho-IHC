@@ -121,29 +121,34 @@ http://127.0.0.1:8000
 
 ### Dados de login
 
-Estudante
+**OBS:** Formato das tuplas de dados abaixo
+```
+username:password
+```
+
+-> Estudante
 ```
 201565041:1234
 [...]
 201565440:1234
 ```
-Professor
+-> Professor
 ```
 100006:1234
 [...]
 100040:1234
 ```
-Coordenador
+-> Coordenador
 ```
 100002:1234
 [...]
 100005:1234
 ```
-Chefe de departamento
+-> Chefe de departamento
 ```
 100001:1234
 ```
-Membro PROGEPE
+-> Membro PROGEPE
 ```
 1001:1234
 [...]

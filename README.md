@@ -83,7 +83,7 @@ flush privileges;
 
 Criar uma nova base de dados para o projeto:
 <pre>
-create database <b>DATABASE</b>;
+create database <b>LARAVEL</b>;
 </pre>
 
 Se tudo correu bem, sair do MySQL:

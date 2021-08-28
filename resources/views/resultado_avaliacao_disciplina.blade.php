@@ -1,5 +1,10 @@
 @extends('layouts.app')
-
+<style>
+    .card-body {
+    display: block !important;            
+    overflow-y: hidden !important;              
+}
+</style>
 @section('content')
 
 <div class="container">

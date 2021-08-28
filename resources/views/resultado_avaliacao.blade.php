@@ -12,6 +12,11 @@ overflow-y: hidden !important;
 height: auto !important; 
 } 
 
+.card-body > .table {
+display: block !important;            
+overflow-y: hidden !important;              
+}
+
 /*
     // bootstrap hack: fix content width inside hidden tabs 
 .tab-content > .tab-pane:not(.active),
@@ -26,7 +31,7 @@ height: auto !important;
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('Tabela') }}</div>
                 <div class="card-body">

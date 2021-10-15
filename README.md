@@ -154,3 +154,7 @@ username:password
 [...]
 1010:1234
 ```
+
+## Licença
+
+O códifo deste projeto está licenciado sob a [The MIT License (MIT)](https://opensource.org/licenses/MIT).

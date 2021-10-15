@@ -54,7 +54,7 @@ php composer.phar install
 
 ### - Environment
 
-Se necessário copie o arquivo `.env.example` e renomeie para `.env` com o comando:
+Caso o arquivo `.env` não exista na pasta local do projeto, copie o arquivo `.env.example` e renomeie para `.env` com o comando:
 ```
 cp .env.example .env
 ``` 
